@@ -7,11 +7,11 @@ import { Observable, of } from 'rxjs';
 })
 export class NavigationService {
   items: MenuItem[] = [
-    // {
-    //   label: 'Cinemar',
-    //   icon: 'bi bi-film',
-    //   routerLink: '/private'
-    // },
+    {
+      label: 'Inicio',
+      icon: 'pi pi-home',
+      routerLink: '/home'
+    },
     {
       label: 'Peliculas',
       icon: 'bi bi-camera-reels-fill',
@@ -38,10 +38,12 @@ export class NavigationService {
     {
       label: 'Mis Reservas',
       icon: 'pi pi-fw pi-calendar',
+      routerLink:'reservations'
     },
     {
       label: 'Salas',
-      icon: 'pi pi-fw pi-calendar',
+      icon: 'bi bi-plus-circle-fill',
+      routerLink:'rooms'
     },
     {
       label: 'Descuentos',
