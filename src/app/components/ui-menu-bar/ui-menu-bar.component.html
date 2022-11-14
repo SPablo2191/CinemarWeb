@@ -1,4 +1,12 @@
 <p-menubar [model]="items">
+  <ng-template pTemplate="start">
+    <div >
+    <a href="/home" class="no-underline">
+      <span><i class="bi bi-film  text-blue-600 hover:text-2xl"></i></span>
+      <p class="inline-block px-2 text-lg  font-bold text-blue-600  hover:text-2xl">Cinemar</p>
+    </a>
+    </div>
+  </ng-template>
   <ng-template pTemplate="end">
     <app-ui-icon-badge></app-ui-icon-badge>
   </ng-template>
