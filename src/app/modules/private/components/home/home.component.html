@@ -1,4 +1,9 @@
 <div class="shadow-3">
     <p class="text-center text-4xl text-gray-800">Peliculas</p>
-    <app-ui-carousel [items]="result.results"></app-ui-carousel>
+    <div *ngIf="loading;else elseblock" class="flex justify-content-center">
+        <app-ui-progress-spinner ></app-ui-progress-spinner>
+    </div>
+    <ng-template #elseblock>
+        <app-ui-carousel [items]="result.results"></app-ui-carousel>
+    </ng-template>
 </div>

@@ -10,6 +10,7 @@ import { CardModule } from 'primeng/card';
 import { RatingModule } from 'primeng/rating';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import {TabViewModule} from 'primeng/tabview';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 @NgModule({
   exports: [
     PasswordModule,
@@ -22,7 +23,8 @@ import {TabViewModule} from 'primeng/tabview';
     CardModule,
     RatingModule,
     DynamicDialogModule,
-    TabViewModule
+    TabViewModule,
+    ProgressSpinnerModule
   ],
 })
 export class PrimeNgImportsModule {}
