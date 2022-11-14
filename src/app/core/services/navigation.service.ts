@@ -38,12 +38,12 @@ export class NavigationService {
     {
       label: 'Mis Reservas',
       icon: 'pi pi-fw pi-calendar',
-      routerLink:'reservations'
+      routerLink:'/home/reservations'
     },
     {
       label: 'Salas',
       icon: 'bi bi-plus-circle-fill',
-      routerLink:'rooms'
+      routerLink:'/home/rooms'
     },
     {
       label: 'Descuentos',
