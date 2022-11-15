@@ -10,18 +10,18 @@ import { MoviesService } from 'src/app/project/services/movies.service';
 })
 export class HomeComponent implements OnInit,OnDestroy {
   result : RootObject = {} as RootObject;
-  subscription : Subscription = new Subscription();
+  subscriptions : Subscription = new Subscription();
   loading : boolean = true;
   constructor(private moviesService : MoviesService) { }
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscriptions.unsubscribe();
   }
 
   ngOnInit(): void {
     this.getMovies();
   }
   getMovies(){
-    this.subscription = this.moviesService.getMovies().pipe(
+    this.subscriptions = this.moviesService.getMovies().pipe(
       map((result)=>{
         this.result = result;
         this.loading = false;

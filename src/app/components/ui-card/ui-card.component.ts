@@ -19,18 +19,18 @@ export class UiCardComponent implements OnInit, OnDestroy {
   @Input() description!: string;
   @Input() icon!: string;
   ref!: DynamicDialogRef;
-  subscription$: Subscription = new Subscription();
+  subscriptions$: Subscription = new Subscription();
   constructor(
     private moviesService: MoviesService,
     private dialogService: DialogService
   ) {}
   ngOnDestroy(): void {
-    this.subscription$.unsubscribe();
+    this.subscriptions$.unsubscribe();
   }
 
   ngOnInit(): void {}
   getDetail() {
-    this.subscription$ = this.moviesService
+    this.subscriptions$ = this.moviesService
       .getMovie(this.id)
       .pipe(
         map((result) => {

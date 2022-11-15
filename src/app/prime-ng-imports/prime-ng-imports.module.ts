@@ -11,6 +11,7 @@ import { RatingModule } from 'primeng/rating';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import {TabViewModule} from 'primeng/tabview';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {TableModule} from 'primeng/table';
 @NgModule({
   exports: [
     PasswordModule,
@@ -24,7 +25,8 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     RatingModule,
     DynamicDialogModule,
     TabViewModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    TableModule
   ],
 })
 export class PrimeNgImportsModule {}

@@ -1,0 +1,37 @@
+<div >
+    <p-toolbar styleClass="mb-4 ">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="Nuevo" icon="pi pi-plus" class="p-button-success mr-2" ></button>
+        </ng-template>
+    </p-toolbar>
+
+<div class="text-center">
+    <p-table #dt [value]="items" [rows]="4" [paginator]="true"   [tableStyle]="{'min-width': '75rem'}" [rowHover]="true" dataKey="id"
+    >
+   <ng-template pTemplate="header">
+       <tr>
+           <th pSortableColumn="name" style="min-width:15rem">Sala </th>
+           <th pSortableColumn="price">Cantidad de butacas <p-sortIcon field="price"></p-sortIcon></th>
+           <th pSortableColumn="category" style="min-width:10rem"> Fecha de Registro <p-sortIcon field="category"></p-sortIcon></th>
+           <th></th>
+       </tr>
+   </ng-template>
+   <ng-template pTemplate="body" let-room>
+       <tr>
+           <td>{{room.nombre}}</td>
+           <td>{{room.cantidadButacas}}</td>
+           <td>{{room.fechaRegistro | date : 'dd/M/yyyy'}}</td>
+           <td>
+               <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" ></button>
+               <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" ></button>
+           </td>
+       </tr>
+   </ng-template>
+   <ng-template pTemplate="summary">
+       <div class="flex align-items-center justify-content-between">
+           Hay en total {{items ? items.length : 0 }} Salas.
+       </div>
+   </ng-template>
+</p-table>
+</div>
+</div>

@@ -15,6 +15,7 @@ import { MovieDetailDialogComponent } from './movie-detail-dialog/movie-detail-d
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { UiProgressSpinnerComponent } from './ui-progress-spinner/ui-progress-spinner.component';
+import { UiDynamicTableComponent } from './ui-dynamic-table/ui-dynamic-table.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { UiProgressSpinnerComponent } from './ui-progress-spinner/ui-progress-sp
     UiCardComponent,
     UiCarouselComponent,
     MovieDetailDialogComponent,
-    UiProgressSpinnerComponent
+    UiProgressSpinnerComponent,
+    UiDynamicTableComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +44,8 @@ import { UiProgressSpinnerComponent } from './ui-progress-spinner/ui-progress-sp
     UiLinkLabelComponent,
     UiMenuBarComponent,
     UiCarouselComponent,
-    UiProgressSpinnerComponent
+    UiProgressSpinnerComponent,
+    UiDynamicTableComponent
   ]
 })
 export class ComponentsModule { }
