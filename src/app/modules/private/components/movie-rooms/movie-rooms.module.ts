@@ -5,9 +5,7 @@ import { MovieRoomsRoutingModule } from './movie-rooms-routing.module';
 import { MovieRoomsComponent } from './movie-rooms.component';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { RoomsCRUDTableComponent } from './components/rooms-crudtable/rooms-crudtable.component';
-import {TableModule} from 'primeng/table';
-import {ToolbarModule} from 'primeng/toolbar';
-import {ButtonModule} from 'primeng/button';
+import { PrimeNgImportsModule } from 'src/app/prime-ng-imports/prime-ng-imports.module';
 @NgModule({
   declarations: [
     MovieRoomsComponent,
@@ -17,9 +15,7 @@ import {ButtonModule} from 'primeng/button';
     CommonModule,
     MovieRoomsRoutingModule,
     ComponentsModule,
-    TableModule,
-    ToolbarModule,
-    ButtonModule
+    PrimeNgImportsModule 
   ]
 })
 export class MovieRoomsModule { }
