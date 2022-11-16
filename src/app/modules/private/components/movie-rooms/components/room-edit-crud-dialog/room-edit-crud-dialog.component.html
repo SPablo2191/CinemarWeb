@@ -1,0 +1,18 @@
+<form [formGroup]="formGroup" (submit)="submit()">
+  <app-ui-input
+    [label]="'Nombre'"
+    [group]="formGroup"
+    name="name" 
+    [errorMessage]="'Ingrese un nombre'"
+    [type]="'text'"
+  ></app-ui-input>
+  <app-ui-input
+    [type]="'number'"
+    [group]="formGroup"
+    name="seatQuantity"
+    [label]="'Cantidad de butacas'"
+  ></app-ui-input>
+  <div class="flex justify-content-center">
+    <p-button label="registrar" type="submit" ></p-button>
+  </div>
+</form>

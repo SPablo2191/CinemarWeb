@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UiInputComponent } from './ui-input/ui-input.component';
 import { UiPasswordInputComponent } from './ui-password-input/ui-password-input.component';
 import { PrimeNgImportsModule } from '../prime-ng-imports/prime-ng-imports.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UiLinkLabelComponent } from './ui-link-label/ui-link-label.component';
 import { RouterModule } from '@angular/router';
 import { UiSideBarComponent } from './ui-side-bar/ui-side-bar.component';
@@ -36,7 +36,8 @@ import { UiDynamicTableComponent } from './ui-dynamic-table/ui-dynamic-table.com
     CommonModule,
     PrimeNgImportsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports :[
     UiInputComponent,
