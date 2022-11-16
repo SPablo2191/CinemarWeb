@@ -41,8 +41,18 @@ export class NavigationService {
       routerLink:'/home/reservations'
     },
     {
+      label: 'Funciones',
+      icon: 'bi bi-calendar3',
+      routerLink:'/home/reservations'
+    },
+    {
       label: 'Salas',
       icon: 'bi bi-plus-circle-fill',
+      routerLink:'/home/rooms'
+    },
+    {
+      label: 'Usuarios',
+      icon: 'bi bi-people-fill',
       routerLink:'/home/rooms'
     },
     {

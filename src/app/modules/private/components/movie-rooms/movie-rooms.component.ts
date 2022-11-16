@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription,map } from 'rxjs';
+import { Subscription,map, tap } from 'rxjs';
 import { Column } from 'src/app/core/models/Column';
 import { Room } from 'src/app/project/models/Rooms';
 import { RoomsService } from 'src/app/project/services/rooms.service';
@@ -22,6 +22,8 @@ export class MovieRoomsComponent implements OnInit,OnDestroy {
   }
   getRooms() {
     this.subscriptions$ = this.roomsService.getRooms().pipe(
+      tap((res) =>{console.log(res);
+      }),
       map((rooms)=>{
         this.rooms = rooms;
       })

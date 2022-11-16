@@ -11,6 +11,7 @@
    <ng-template pTemplate="header">
        <tr>
            <th pSortableColumn="name" style="min-width:15rem">Sala </th>
+           <th pSortableColumn="price">Tipo de Sala </th>
            <th pSortableColumn="price">Cantidad de butacas <p-sortIcon field="price"></p-sortIcon></th>
            <th pSortableColumn="category" style="min-width:10rem"> Fecha de Registro <p-sortIcon field="category"></p-sortIcon></th>
            <th></th>
@@ -19,6 +20,7 @@
    <ng-template pTemplate="body" let-room>
        <tr>
            <td>{{room.nombre}}</td>
+           <td>{{room.tipoSala.nombre}}</td>
            <td>{{room.cantidadButacas}}</td>
            <td>{{room.fechaRegistro | date : 'dd/M/yyyy'}}</td>
            <td>
