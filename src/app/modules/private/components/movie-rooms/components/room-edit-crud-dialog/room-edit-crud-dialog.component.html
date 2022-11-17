@@ -12,12 +12,8 @@
     name="cantidadButacas"
     [label]="'Cantidad de butacas'"
   ></app-ui-input> -->
-  <div >
-    <button pButton pRipple  label="Añadir fila" type="button" icon="pi pi-plus" class="p-button-rounded mx-2 p-button-success p-button-sm"></button>
-  </div>
-  <div class="flex justify-content-end">
-    <p class="text-lg">{{total}} butacas en total</p>
-  </div>
+
+  <app-room-rows-table></app-room-rows-table>
   <div class="flex justify-content-center">
     <p-button label="registrar" type="submit" ></p-button>
   </div>

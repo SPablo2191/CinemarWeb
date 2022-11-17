@@ -8,11 +8,13 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { RoomsCRUDTableComponent } from './components/rooms-crudtable/rooms-crudtable.component';
 import { PrimeNgImportsModule } from 'src/app/prime-ng-imports/prime-ng-imports.module';
 import { RoomEditCrudDialogComponent } from './components/room-edit-crud-dialog/room-edit-crud-dialog.component';
+import { RoomRowsTableComponent } from './components/room-rows-table/room-rows-table.component';
 @NgModule({
   declarations: [
     MovieRoomsComponent,
     RoomsCRUDTableComponent,
-    RoomEditCrudDialogComponent
+    RoomEditCrudDialogComponent,
+    RoomRowsTableComponent
   ],
   imports: [
     CommonModule,

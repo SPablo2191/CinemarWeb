@@ -1,0 +1,60 @@
+<div>
+  <button
+    pButton
+    pRipple
+    label="Añadir fila"
+    type="button"
+    icon="pi pi-plus"
+    class="p-button-rounded mx-2 p-button-success p-button-sm"
+  ></button>
+</div>
+<p-table [value]="items" responsiveLayout="stack" dataKey="id" *ngIf="items">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th>Fila</th>
+      <th>Cantidad</th>
+      <th>Acciones</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-articulo let-columns="columns">
+    <tr>
+      <td>
+        <span class="p-column-title font-bold">Id. Artículo</span
+        >{{ articulo.id }}
+      </td>
+      <td>
+        <span class="p-column-title font-bold">Cantidad</span>
+        <div class="field flex flex-column">
+          <input
+            #inputCant
+            id="cantidad"
+            type="number"
+            pInputText
+            min="0"
+            oninput="validity.valid||(value='');"
+            placeholder="Cantidad del artículo"
+          />
+          <small
+            class="p-error"
+            *ngIf="!articulo.cantidad && articulo.cantidad <= 0"
+            >Cantidad requerida mayor a 0.</small
+          >
+        </div>
+      </td>
+      <td>
+        <span class="p-column-title font-bold">Acción</span>
+        <button
+          pButton
+          pRipple
+          tooltipPosition="top"
+          pTooltip="Eliminar"
+          icon="pi pi-trash"
+          class="p-button-rounded p-button-danger mr-2"
+        ></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+<div class="flex justify-content-end">
+  <p class="text-lg">{{ total }} butacas en total</p>
+</div>
