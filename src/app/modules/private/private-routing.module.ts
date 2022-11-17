@@ -29,6 +29,7 @@ const routes: Routes = [
       },
     ],
   },
+  { path: 'shows', loadChildren: () => import('./shows/shows.module').then(m => m.ShowsModule) },
 ];
 
 @NgModule({

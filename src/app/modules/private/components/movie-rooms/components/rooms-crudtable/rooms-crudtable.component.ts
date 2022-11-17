@@ -15,13 +15,12 @@ import { RoomEditCrudDialogComponent } from '../room-edit-crud-dialog/room-edit-
 })
 export class RoomsCRUDTableComponent extends crud implements OnInit {
   items: Room[] = [];
-  ref!: DynamicDialogRef;
   subscriptions$: Subscription = new Subscription();
   constructor(
     private roomsService: RoomsService,
-    private dialogService: DialogService
+    dialogService: DialogService
   ) {
-    super();
+    super(dialogService);
   }
   ngOnDestroy(): void {
     this.subscriptions$.unsubscribe();
@@ -44,14 +43,11 @@ export class RoomsCRUDTableComponent extends crud implements OnInit {
       .subscribe();
   }
   override add() {
-    this.ref = this.dialogService.open(RoomEditCrudDialogComponent, {
-      header: 'Nueva Sala',
-      width: '70%',
-    });
+    this.getDialog(RoomEditCrudDialogComponent,'Nueva Sala');
   }
 
   override edit(room: Room): void {
-    throw new Error('Method not implemented.');
+    this.getDialog(RoomEditCrudDialogComponent,'Nueva Sala',room);
   }
   override delete(room: Room): void {
     throw new Error('Method not implemented.');

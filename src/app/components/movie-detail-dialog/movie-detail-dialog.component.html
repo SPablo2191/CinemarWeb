@@ -39,7 +39,9 @@
             Aca si sobra tiempo, pongo el trailer
           </p-tabPanel>
           <p-tabPanel header="Funciones" [leftIcon]="'bi bi-camera-reels-fill'">
-            abm de funciones
+            <div class="flex justify-content-center">
+              <app-ui-dynamic-table [cols]="cols"></app-ui-dynamic-table>
+            </div>
           </p-tabPanel>
         </p-tabView>
       </div>
