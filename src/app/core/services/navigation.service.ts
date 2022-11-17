@@ -43,7 +43,7 @@ export class NavigationService {
     {
       label: 'Funciones',
       icon: 'bi bi-calendar3',
-      routerLink:'/home/reservations'
+      routerLink:'/home/shows'
     },
     {
       label: 'Salas',
@@ -53,11 +53,12 @@ export class NavigationService {
     {
       label: 'Usuarios',
       icon: 'bi bi-people-fill',
-      routerLink:'/home/rooms'
+      routerLink:'/home/users'
     },
     {
       label: 'Descuentos',
-      icon:'bi bi-currency-dollar'
+      icon:'bi bi-currency-dollar',
+      routerLink:'/home/discounts'
     }
   ];
   constructor() {}

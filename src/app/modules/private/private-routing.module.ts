@@ -27,9 +27,11 @@ const routes: Routes = [
             (m) => m.ReservationsModule
           ),
       },
+      { path: 'shows', loadChildren: () => import('./shows/shows.module').then(m => m.ShowsModule) },
+      { path: 'discounts', loadChildren: () => import('./components/discounts/discounts.module').then(m => m.DiscountsModule) },
+      { path: 'users', loadChildren: () => import('./components/users/users.module').then(m => m.UsersModule) },
     ],
   },
-  { path: 'shows', loadChildren: () => import('./shows/shows.module').then(m => m.ShowsModule) },
 ];
 
 @NgModule({
