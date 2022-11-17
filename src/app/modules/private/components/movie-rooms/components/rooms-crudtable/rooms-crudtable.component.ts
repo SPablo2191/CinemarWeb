@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { map, Subscription, tap } from 'rxjs';
 import { crud } from 'src/app/core/classes/crud.class';
@@ -31,12 +32,9 @@ export class RoomsCRUDTableComponent extends crud implements OnInit {
   }
   override get() {
     this.subscriptions$ = this.roomsService
-      .getRooms()
+      .get()
       .pipe(
-        tap((res) => {
-          console.log(res);
-        }),
-        map((rooms) => {
+        map((rooms : Room []) => {
           this.items = rooms;
         })
       )

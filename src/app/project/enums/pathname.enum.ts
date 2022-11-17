@@ -1,4 +1,5 @@
 export enum pathnameEnum{
     movies = 'movies',
-    movieRooms = 'rooms'
+    movieRooms = 'rooms',
+    shows = 'shows'
 }

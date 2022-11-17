@@ -12,6 +12,7 @@ import { Room } from 'src/app/project/models/Rooms';
 })
 export class RoomEditCrudDialogComponent extends editCrud implements OnInit {
   room : Room = this.config.data;
+  total : number = 0
   constructor(
     protected fb: FormBuilder,
     public ref: DynamicDialogRef,

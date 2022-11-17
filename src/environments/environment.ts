@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // apiUrl:  'http://127.0.0.1:5000/',
-  apiUrl:  'https://cinemar-api-git-develop-spablo2191.vercel.app/',
+  apiUrl:  'http://127.0.0.1:5000/',
+  // apiUrl:  'https://cinemar-api-git-develop-spablo2191.vercel.app/',
   // apiUrl:  'https://cinemar-api.vercel.app/',
 };
 
