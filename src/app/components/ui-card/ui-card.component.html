@@ -12,10 +12,10 @@
   <div>
     <p class="text-center">{{ description }}</p>
   </div>
+  <div class="flex justify-content-center">
+    <p-rating [ngModel]="rating * 0.5" [readonly]="true" [stars]="5"  [cancel]="false"></p-rating>
+  </div>
   <ng-template pTemplate="footer">
-    <div class="flex justify-content-center">
-      <p-rating [ngModel]="rating * 0.5" [readonly]="true" [stars]="5"  [cancel]="false"></p-rating>
-    </div>
   </ng-template>
 </p-card>
 </a>
