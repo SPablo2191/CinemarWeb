@@ -5,7 +5,7 @@
       [value]="items"
       [rows]="3"
       [paginator]="true"
-      [tableStyle]="{ 'min-width': '75rem' }"
+      responsiveLayout="stack"
       [rowHover]="true"
       dataKey="id"
     >
@@ -47,10 +47,10 @@
       </ng-template>
       <ng-template pTemplate="body" let-room>
         <tr>
-          <td>{{ room.nombre }}</td>
-          <td>{{ room.tipoSala.nombre }}</td>
-          <td>{{ room.cantidadButacas }}</td>
-          <td>{{ room.fechaRegistro | date: "dd/M/yyyy" }}</td>
+          <td><span class="p-column-title font-bold">Nombre</span> {{ room.nombre }}</td>
+          <td><span class="p-column-title font-bold">Tipo</span>{{ room.tipoSala.nombre }}</td>
+          <td><span class="p-column-title font-bold">Cantidad</span>{{ room.cantidadButacas }}</td>
+          <td><span class="p-column-title font-bold">Fecha de Registro</span>{{ room.fechaRegistro | date: "dd/M/yyyy" }}</td>
           <td>
             <button
               pButton

@@ -1,5 +1,5 @@
 <div class="grid justify-content-center">
-  <div class="col-5">
+  <div class="block md:col-5">
     <img
       src="{{ 'https://image.tmdb.org/t/p/original/' + movie.backdrop_path }}"
       alt="movie"
@@ -8,35 +8,42 @@
       class="border-round"
     />
   </div>
-  <div class="col-7">
+  <div class="block md:col-7">
     <div class="grid">
       <div class="col-12">
-        <p-tabView>
-          <p-tabPanel header="Descripción" [leftIcon]="'pi pi-search'">
-            <p class="text-md">Titulo Original: {{ movie.original_title }}</p>
-            <p class="text-md">Duración: {{ movie.runtime }} minutos</p>
-            <div style="display: inline">
-              Genero:
-              <p *ngFor="let item of movie.genres" class="inline font-bold">
-                {{ item.name }}
-              </p>
+        <p-tabView [scrollable]="true">
+          <p-tabPanel header="Descripción" [leftIcon]="'pi pi-search'" [selected]="true">
+            <div class="flex flex-wrap align-items-center justify-content-center md:flex justify-content-start">
+              <div class="surface-overlay  w-16rem min-h-full shadow-1 p-5 py-0 m-3 md:w-max p-0 m-0 h-full">
+                <div class="text-left md:text-justify">
+                  <p class="text-md">Titulo Original: {{ movie.original_title }}</p>
+                  <p class="text-md">Duración: {{ movie.runtime }} minutos</p>
+                  <div style="display: inline">
+                    Genero:
+                    <p *ngFor="let item of movie.genres" class="inline font-bold">
+                      {{ item.name }}
+                    </p>
+                  </div>
+                  <div>
+                    Producido por:
+                    <p
+                      *ngFor="let item of movie.production_companies | slice: 0:2"
+                      class="inline font-bold"
+                    >
+                      {{ item.name }}
+                    </p>
+                  </div>
+                  <p class="text-md">
+                    Pagina Oficial:
+                    <a href="{{ movie.homepage }}">{{ movie.homepage }}</a>
+                  </p>
+                </div>
+  
+              </div>
             </div>
-            <div>
-              Producido por:
-              <p
-                *ngFor="let item of movie.production_companies | slice: 0:2"
-                class="inline font-bold"
-              >
-                {{ item.name }}
-              </p>
-            </div>
-            <p class="text-md">
-              Pagina Oficial:
-              <a href="{{ movie.homepage }}">{{ movie.homepage }}</a>
-            </p>
           </p-tabPanel>
           <p-tabPanel header="Trailer" [leftIcon]="'bi bi-film'">
-            Aca si sobra tiempo, pongo el trailer
+            En produccion
           </p-tabPanel>
           <p-tabPanel header="Funciones" [leftIcon]="'bi bi-camera-reels-fill'">
             <div class="flex justify-content-center">

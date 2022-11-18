@@ -37,7 +37,7 @@ export class UiCardComponent implements OnInit, OnDestroy {
           this.ref = this.dialogService.open(MovieDetailDialogComponent,{
             data: {movie: result},
             header: `${result.title}`,
-            width: '70%',
+            width: '80%',
             contentStyle: {"overflow": "auto"},
             baseZIndex: 10000,
           });

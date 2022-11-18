@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 
@@ -14,6 +15,7 @@ export class UiInputComponent implements OnInit {
   @Input() name! : string;
   @Input() type! : string;
   valid : boolean = false;
+  @Output() value = new EventEmitter<string>();
   change: Subject<string> = new Subject<string>()
 
   constructor() {}
@@ -23,6 +25,11 @@ export class UiInputComponent implements OnInit {
   }
   onInput() {
     this.change.next(this.group.controls[this.name].value);
+    this.value.emit(this.group.controls[this.name].value);
 }
 
 }
+function output() {
+  throw new Error('Function not implemented.');
+}
+

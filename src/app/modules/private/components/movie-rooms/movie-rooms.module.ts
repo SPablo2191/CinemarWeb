@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MovieRoomsRoutingModule } from './movie-rooms-routing.module';
 import { MovieRoomsComponent } from './movie-rooms.component';
@@ -21,6 +21,7 @@ import { RoomRowsTableComponent } from './components/room-rows-table/room-rows-t
     MovieRoomsRoutingModule,
     ComponentsModule,
     ReactiveFormsModule,
+    FormsModule,
     PrimeNgImportsModule 
   ]
 })

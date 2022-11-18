@@ -1,0 +1,95 @@
+<p-table
+  #dt
+  [value]="items"
+  [rows]="3"
+  [paginator]="true"
+  responsiveLayout="stack"
+  [rowHover]="true"
+  [rowHover]="true"
+  dataKey="id"
+>
+  <ng-template pTemplate="caption">
+    <div class="flex justify-content-center align-content-center">
+      <div class="col">
+        <div
+          class="flex align-content-center justify-content-center lg:justify-content-start"
+        >
+          <button
+            pButton
+            pRipple
+            label="Nuevo"
+            pTooltip="Nueva Sala"
+            tooltipPosition="bottom"
+            icon="pi pi-plus"
+            class="p-button-success"
+            (click)="add()"
+          ></button>
+        </div>
+      </div>
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input
+          pInputText
+          class="p-inputtext-md"
+          type="text"
+          (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+          placeholder="Buscar..."
+        />
+      </span>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="name" >Reserva</th>
+      <th>Pelicula</th>
+      <th pSortableColumn="cantidad">
+        Sala <p-sortIcon field="cantidad"></p-sortIcon>
+      </th>
+      <th pSortableColumn="fechaRegistro" >
+        Fecha de Función <p-sortIcon field="fechaRegistro"></p-sortIcon>
+      </th>
+      <th>Acciones</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-show>
+    <tr>
+      <td>
+        <span class="p-column-title font-bold">Reserva</span
+        >{{ show.codigoReserva }}
+      </td>
+      <td>
+        <span class="p-column-title font-bold">Pelicula</span
+        >{{ show.pelicula.nombre }}
+      </td>
+      <td>
+        <span class="p-column-title font-bold">Sala</span>{{ show.sala.nombre }}
+      </td>
+      <td>
+        <span class="p-column-title font-bold">fecha de Función</span
+        >{{ show.fechaFuncion | date: "dd/M/yyyy" }}
+      </td>
+      <td>
+        <button
+          pButton
+          pRipple
+          icon="pi pi-pencil"
+          class="p-button-rounded p-button-success mr-2"
+          (click)="edit(show)"
+        ></button>
+        <button
+          pButton
+          pRipple
+          icon="pi pi-trash"
+          class="p-button-rounded p-button-warning"
+          (click)="delete(show)"
+        ></button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    <div class="flex align-items-center justify-content-between">
+      Hay en total {{ items ? items.length : 0 }} Reservaciones.
+    </div>
+  </ng-template>
+</p-table>
