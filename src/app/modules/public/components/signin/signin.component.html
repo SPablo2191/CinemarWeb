@@ -7,13 +7,13 @@
     <div class="col">
       <p class="text-2xl text-gray-700">Registrarse</p>
 
-      <app-ui-input [label]="'Nombre'"></app-ui-input>
-      <app-ui-input [label]="'Apellido'"></app-ui-input>
-      <app-ui-input [label]="'Correo'"></app-ui-input>
-      <app-ui-input [label]="'Fecha de Nacimiento'"></app-ui-input>
-      <app-ui-input [label]="'Telefono'"></app-ui-input>
-      <app-ui-input [label]="'Nombre de Usuario'"></app-ui-input>
-      <app-ui-password-input [label]="'Constraseña'"></app-ui-password-input>
+      <app-ui-input [label]="'Nombre'" [group]="formGroup" name="nombre"></app-ui-input>
+      <app-ui-input [label]="'Apellido'" [group]="formGroup" name="apellido"></app-ui-input>
+      <app-ui-input [label]="'Correo'" [group]="formGroup" name="correo"></app-ui-input>
+      <app-ui-input [label]="'Fecha de Nacimiento'" [group]="formGroup" name="fechaNac"></app-ui-input>
+      <app-ui-input [label]="'Telefono'" [group]="formGroup" name="telefono"></app-ui-input>
+      <app-ui-input [label]="'Nombre de Usuario'" [group]="formGroup" name="nombreUsuario"></app-ui-input>
+      <app-ui-password-input [label]="'Constraseña'" ></app-ui-password-input>
       <app-ui-password-input [label]="'Repetir Constraseña'"></app-ui-password-input>
       <div class=" md: flex justify-content-center py-2">
         <p-button

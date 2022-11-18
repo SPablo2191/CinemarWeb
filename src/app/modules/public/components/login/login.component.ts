@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { editCrud } from 'src/app/core/classes/editCrud.class';
+import { abstractForm } from 'src/app/core/classes/editCrud.class';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +8,7 @@ import { editCrud } from 'src/app/core/classes/editCrud.class';
   providers: [FormBuilder],
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent extends editCrud implements OnInit {
+export class LoginComponent extends abstractForm implements OnInit {
 
   constructor(protected fb: FormBuilder) {
     super();

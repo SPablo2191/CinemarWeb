@@ -1,6 +1,6 @@
 import { FormGroup } from "@angular/forms";
 
-export class editCrud{
+export class abstractForm{
     formGroup! : FormGroup
 
     createForm() : void{}

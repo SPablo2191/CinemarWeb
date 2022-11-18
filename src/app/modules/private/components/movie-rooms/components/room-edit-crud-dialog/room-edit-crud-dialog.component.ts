@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { editCrud } from 'src/app/core/classes/editCrud.class';
+import { abstractForm } from 'src/app/core/classes/editCrud.class';
 import { Room } from 'src/app/project/models/Rooms';
 
 @Component({
@@ -10,7 +10,7 @@ import { Room } from 'src/app/project/models/Rooms';
   providers: [FormBuilder],
   styleUrls: ['./room-edit-crud-dialog.component.css'],
 })
-export class RoomEditCrudDialogComponent extends editCrud implements OnInit {
+export class RoomEditCrudDialogComponent extends abstractForm implements OnInit {
   room : Room = this.config.data;
   constructor(
     protected fb: FormBuilder,
