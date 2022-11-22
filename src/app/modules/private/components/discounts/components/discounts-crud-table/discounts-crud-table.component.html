@@ -1,0 +1,84 @@
+<div>
+    <div class="text-center">
+      <p-table
+        #dt
+        [value]="items"
+        [rows]="3"
+        [paginator]="true"
+        responsiveLayout="stack"
+        [rowHover]="true"
+        dataKey="id"
+      >
+        <ng-template pTemplate="caption">
+          <div class="grid">
+            <div class="col">
+              <div
+                class="flex flex-wrap gap-3 justify-content-center md:justify-content-between align-content-center"
+              >
+                <div class="flex flex-wrap gap-3 justify-content-center">
+                  <button
+                    pButton
+                    pRipple
+                    label="Nuevo"
+                    pTooltip="Nuevo Descuento"
+                    tooltipPosition="bottom"
+                    icon="pi pi-plus"
+                    class="p-button-success"
+                    (click)="add()"
+                  ></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+  
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Día de descuento</th>
+            <th>Descripción</th>
+            <th>Porcentaje</th>
+            <th>Acciones</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-discount>
+          <tr>
+            <td>
+              <span class="p-column-title font-bold">Dia</span>
+              {{ discount.dia }}
+            </td>
+            <td>
+              <span class="p-column-title font-bold">Descripción</span
+              >{{ discount.Descripcion }}
+            </td>
+            <td>
+              <span class="p-column-title font-bold">Porcentaje</span
+              >{{ discount.porcentaje }}
+            </td>
+
+            <td>
+              <button
+                pButton
+                pRipple
+                icon="pi pi-pencil"
+                class="p-button-rounded p-button-success mr-2"
+                (click)="edit(discount)"
+              ></button>
+              <button
+                pButton
+                pRipple
+                icon="pi pi-trash"
+                class="p-button-rounded p-button-warning"
+                (click)="delete(discount)"
+              ></button>
+            </td>
+          </tr>
+        </ng-template>
+        <!-- <ng-template pTemplate="summary">
+          <div class="flex align-items-center justify-content-between">
+            Hay en total {{ items ? items.length : 0 }} Descuentos.
+          </div>
+        </ng-template> -->
+      </p-table>
+    </div>
+  </div>
+  
