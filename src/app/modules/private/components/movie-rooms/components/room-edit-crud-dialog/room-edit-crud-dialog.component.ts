@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { abstractForm } from 'src/app/core/classes/editCrud.class';
 import { Room } from 'src/app/project/models/Rooms';
+import { Seat } from 'src/app/project/models/Seats';
 
 @Component({
   selector: 'app-room-edit-crud-dialog',
@@ -12,6 +13,7 @@ import { Room } from 'src/app/project/models/Rooms';
 })
 export class RoomEditCrudDialogComponent extends abstractForm implements OnInit {
   room : Room = this.config.data;
+  seats : Seat [] = [];
   constructor(
     protected fb: FormBuilder,
     public ref: DynamicDialogRef,
@@ -35,6 +37,7 @@ export class RoomEditCrudDialogComponent extends abstractForm implements OnInit 
     this.formGroup = this.fb.group({
       nombre: [null],
       cantidadButacas: [null],
+      butacas : [this.seats]
     });
   }
 }

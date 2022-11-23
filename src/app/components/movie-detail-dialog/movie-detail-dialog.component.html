@@ -11,7 +11,7 @@
   <div class="block md:col-7">
     <div class="grid">
       <div class="col-12">
-        <p-tabView [scrollable]="true">
+        <p-tabView >
           <p-tabPanel header="Descripción" [leftIcon]="'pi pi-search'" [selected]="true">
             <div class="flex flex-wrap align-items-center justify-content-center md:flex justify-content-start">
               <div class="surface-overlay  w-16rem min-h-full p-5 py-0 m-3 md:w-max p-0 m-0 h-full">
@@ -55,7 +55,7 @@
       </div>
       <div class="col-12">
         <div class="flex justify-content-center">
-          <p-button label="Reservar" icon="pi pi-search"></p-button>
+          <p-button label="Reservar" (onClick)="reserve()"  icon="pi pi-search"></p-button>
         </div>
       </div>
     </div>

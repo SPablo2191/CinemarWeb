@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Seat } from 'src/app/project/models/Seats';
 
@@ -10,7 +10,8 @@ import { Seat } from 'src/app/project/models/Seats';
 export class RoomRowsTableComponent implements OnInit {
   @Input() formGroup!: FormGroup;
   total: number = 0;
-  items: Seat[] = [];
+  @Input() items: Seat[] = [];
+  @Output() itemsChange = new EventEmitter<Seat[]>();
   fila: number = 1;
   constructor() {}
 
@@ -21,7 +22,9 @@ export class RoomRowsTableComponent implements OnInit {
   }
   popRow() {
     console.log(this.items[this.items.length - 1]);
-    this.total -= this.items[this.items.length - 1].columna;
+    if(this.total != 0){
+      this.total -= this.items[this.items.length - 1].columna;
+    }
     this.items.pop();
     this.fila--;
   }

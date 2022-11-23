@@ -5,15 +5,12 @@ import { UiPasswordInputComponent } from './ui-password-input/ui-password-input.
 import { PrimeNgImportsModule } from '../prime-ng-imports/prime-ng-imports.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UiLinkLabelComponent } from './ui-link-label/ui-link-label.component';
-import { RouterModule } from '@angular/router';
 import { UiSideBarComponent } from './ui-side-bar/ui-side-bar.component';
 import { UiMenuBarComponent } from './ui-menu-bar/ui-menu-bar.component';
 import { UiIconBadgeComponent } from './ui-icon-badge/ui-icon-badge.component';
 import { UiCardComponent } from './ui-card/ui-card.component';
 import { UiCarouselComponent } from './ui-carousel/ui-carousel.component';
 import { MovieDetailDialogComponent } from './movie-detail-dialog/movie-detail-dialog.component';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
 import { UiProgressSpinnerComponent } from './ui-progress-spinner/ui-progress-spinner.component';
 import { UiDynamicTableComponent } from './ui-dynamic-table/ui-dynamic-table.component';
 
@@ -36,7 +33,6 @@ import { UiDynamicTableComponent } from './ui-dynamic-table/ui-dynamic-table.com
     CommonModule,
     PrimeNgImportsModule,
     FormsModule,
-    RouterModule,
     ReactiveFormsModule
   ],
   exports :[

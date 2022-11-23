@@ -6,7 +6,7 @@
     [errorMessage]="'Ingrese un nombre'"
     [type]="'text'"
   ></app-ui-input>
-  <app-room-rows-table [formGroup]="formGroup"></app-room-rows-table>
+  <app-room-rows-table [formGroup]="formGroup" [items]="seats"></app-room-rows-table>
   <div class="flex justify-content-center">
     <p-button label="registrar" type="submit" ></p-button>
   </div>

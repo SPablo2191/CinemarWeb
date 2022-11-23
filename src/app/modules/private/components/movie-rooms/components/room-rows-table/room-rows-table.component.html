@@ -12,7 +12,7 @@
       pButton
       *ngIf="items.length != 0"
       pRipple
-      label="Añadir fila"
+      label="Quitar fila"
       type="button"
       icon="pi pi-minus"
       (click)="popRow()"
@@ -29,12 +29,12 @@
   <ng-template pTemplate="body" let-butaca let-columns="columns">
     <tr>
       <td>
-        <span class="p-column-title font-bold">Id. Artículo</span
+        <span class="p-column-title font-bold">Fila</span
         >{{ butaca.fila }}
       </td>
       <td>
-        <span class="p-column-title font-bold">Cantidad de butacas</span>
-        <div class="field flex flex-column" >
+        <span class="p-column-title font-bold">Cantidad</span>
+        <div class="md:field flex flex-column">
           <input
           #inputCant
           id="cantidadButacas"

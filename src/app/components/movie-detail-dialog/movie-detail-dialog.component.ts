@@ -6,6 +6,7 @@ import { MovieDetailed } from 'src/app/project/models/Movies';
 import { ShowsService } from 'src/app/project/services/shows.service';
 import { Show } from 'src/app/project/models/Shows';
 import { Room } from 'src/app/project/models/Rooms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-movie-detail-dialog',
   templateUrl: './movie-detail-dialog.component.html',
@@ -24,7 +25,8 @@ export class MovieDetailDialogComponent implements OnInit,OnDestroy {
   constructor(
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig,
-    private showService : ShowsService
+    private showService : ShowsService,
+    private router : Router
   ) {}
   ngOnDestroy(): void {
     this.subscriptions$.unsubscribe();
@@ -40,5 +42,9 @@ export class MovieDetailDialogComponent implements OnInit,OnDestroy {
         this.shows = items;
       })
     ).subscribe();
+  }
+  reserve(){
+    this.router.navigate(['/home/reservations']);
+    this.ref.close();
   }
 }
