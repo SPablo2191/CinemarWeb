@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription,map } from 'rxjs';
-import { RootObject } from 'src/app/project/models/Movies';
+import { Movie, RootObject } from 'src/app/project/models/Movies';
 import { MoviesService } from 'src/app/project/services/movies.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { MoviesService } from 'src/app/project/services/movies.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit,OnDestroy {
-  result : RootObject = {} as RootObject;
+  items! : Movie [];
   subscriptions : Subscription = new Subscription();
   loading : boolean = true;
   constructor(private moviesService : MoviesService) { }
@@ -21,9 +21,9 @@ export class HomeComponent implements OnInit,OnDestroy {
     this.getMovies();
   }
   getMovies(){
-    this.subscriptions = this.moviesService.getMovies().pipe(
-      map((result)=>{
-        this.result = result;
+    this.subscriptions = this.moviesService.get().pipe(
+      map((items)=>{
+        this.items = items;
         this.loading = false;
       })
     ).subscribe();

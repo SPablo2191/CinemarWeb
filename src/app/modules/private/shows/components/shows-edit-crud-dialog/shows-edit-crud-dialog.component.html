@@ -1,3 +1,4 @@
+<!-- <app-ui-select-item-table [cols]="" [items]=""></app-ui-select-item-table> -->
 <form [formGroup]="formGroup" (submit)="submit()">
   <div class="formgrid grid">
     <div class="col-4 md:col-1 my-3 flex-column">
@@ -8,6 +9,7 @@
         tooltipPosition="top"
         pTooltip="Selecionar Sala"
         icon="pi pi-plus"
+        (click)="getRoom()"
         class="p-button-rounded p-button-sm"
       ></button>
     </div>
@@ -35,8 +37,9 @@
         pRipple
         type="button"
         pTooltip="Selecionar Pelicula"
-        tooltipPosition="top"
+        tooltipPosition="bottom"
         icon="pi pi-plus"
+        (click)="getMovie()"
         class="p-button-rounded p-button-sm"
       ></button>
     </div>
