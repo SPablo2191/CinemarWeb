@@ -6,12 +6,14 @@ import { ReservationsComponent } from './reservations.component';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { ReservationCRUDTableComponent } from './components/reservation-crudtable/reservation-crudtable.component';
 import { PrimeNgImportsModule } from 'src/app/prime-ng-imports/prime-ng-imports.module';
+import { ReservationEditCrudDialogComponent } from './components/reservation-edit-crud-dialog/reservation-edit-crud-dialog.component';
 
 
 @NgModule({
   declarations: [
     ReservationsComponent,
-    ReservationCRUDTableComponent
+    ReservationCRUDTableComponent,
+    ReservationEditCrudDialogComponent
   ],
   imports: [
     CommonModule,

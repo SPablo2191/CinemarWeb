@@ -1,0 +1,64 @@
+<form [formGroup]="formGroup" (submit)="submit()">
+  <div class="formgrid grid">
+    <div class="col-4 md:col-1 my-3 flex-column">
+      <button
+        pButton
+        pRipple
+        type="button"
+        tooltipPosition="top"
+        pTooltip="Selecionar Sala"
+        icon="pi pi-plus"
+        class="p-button-rounded p-button-sm"
+      ></button>
+    </div>
+    <div class="col-8 md:col-6 flex-column">
+      <app-ui-input
+        [group]="formGroup"
+        name="sala"
+        [readOnly]="true"
+        placeholder="Sala"
+      ></app-ui-input>
+    </div>
+    <div class="col-12 md:col-5 flex-column">
+      <app-ui-input
+        [group]="formGroup"
+        name="tipoSala"
+        [readOnly]="true"
+        placeholder="Tipo"
+      ></app-ui-input>
+    </div>
+  </div>
+  <div class="formgrid grid">
+    <div class="col-4 md:col-1 my-3 flex-column">
+      <button
+        pButton
+        pRipple
+        type="button"
+        pTooltip="Selecionar Pelicula"
+        tooltipPosition="top"
+        icon="pi pi-plus"
+        class="p-button-rounded p-button-sm"
+      ></button>
+    </div>
+    <div class="col-8 md:col-6 flex-column">
+      <app-ui-input
+        [group]="formGroup"
+        name="pelicula"
+        [readOnly]="true"
+        placeholder="Pelicula"
+      ></app-ui-input>
+    </div>
+<div class="field col my-3">
+    <app-ui-calendar
+    [group]="formGroup"
+    placeholder="Ingresar Fecha"
+    name="fechaFuncion"
+  ></app-ui-calendar>
+</div>
+  </div>
+
+  <div class="flex justify-content-center">
+      <button pButton pRipple type="button" label="Cancelar" class="p-button-raised p-button-secondary mx-2"></button>
+    <button pButton pRipple  type="submit" label="Registrar" class="p-button-raised"></button>
+  </div>
+</form>

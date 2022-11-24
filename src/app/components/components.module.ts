@@ -13,6 +13,7 @@ import { UiCarouselComponent } from './ui-carousel/ui-carousel.component';
 import { MovieDetailDialogComponent } from './movie-detail-dialog/movie-detail-dialog.component';
 import { UiProgressSpinnerComponent } from './ui-progress-spinner/ui-progress-spinner.component';
 import { UiDynamicTableComponent } from './ui-dynamic-table/ui-dynamic-table.component';
+import { UiCalendarComponent } from './ui-calendar/ui-calendar.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { UiDynamicTableComponent } from './ui-dynamic-table/ui-dynamic-table.com
     UiCarouselComponent,
     MovieDetailDialogComponent,
     UiProgressSpinnerComponent,
-    UiDynamicTableComponent
+    UiDynamicTableComponent,
+    UiCalendarComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +44,8 @@ import { UiDynamicTableComponent } from './ui-dynamic-table/ui-dynamic-table.com
     UiMenuBarComponent,
     UiCarouselComponent,
     UiProgressSpinnerComponent,
-    UiDynamicTableComponent
+    UiDynamicTableComponent,
+    UiCalendarComponent
   ]
 })
 export class ComponentsModule { }

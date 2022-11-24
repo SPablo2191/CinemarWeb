@@ -14,6 +14,7 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {TableModule} from 'primeng/table';
 import {ToolbarModule} from 'primeng/toolbar';
 
+import {CalendarModule} from 'primeng/calendar';
 @NgModule({
   exports: [
     PasswordModule,
@@ -29,7 +30,8 @@ import {ToolbarModule} from 'primeng/toolbar';
     TabViewModule,
     ProgressSpinnerModule,
     TableModule,
-    ToolbarModule
+    ToolbarModule,
+    CalendarModule
   ],
 })
 export class PrimeNgImportsModule {}

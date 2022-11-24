@@ -1,0 +1,14 @@
+<div  [formGroup]="group">
+  <div >
+    <p-calendar
+      [formControlName]="name"
+      [showIcon]="true"
+      (onSelect)="onSelect()"
+      [showTime]="true"
+      [touchUI]="true"
+      [placeholder]="placeholder"
+      [showSeconds]="true"
+      inputId="time"
+    ></p-calendar>
+  </div>
+</div>

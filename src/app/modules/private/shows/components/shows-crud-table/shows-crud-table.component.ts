@@ -4,6 +4,7 @@ import { Subscription, map } from 'rxjs';
 import { crud } from 'src/app/core/classes/crud.class';
 import { Show } from 'src/app/project/models/Shows';
 import { ShowsService } from 'src/app/project/services/shows.service';
+import { ShowsEditCrudDialogComponent } from '../shows-edit-crud-dialog/shows-edit-crud-dialog.component';
 
 @Component({
   selector: 'app-shows-crud-table',
@@ -27,6 +28,9 @@ export class ShowsCrudTableComponent extends crud implements OnInit {
         this.items = items;
       })
     ).subscribe();
+  }
+  override add(){
+    this.getDialog(ShowsEditCrudDialogComponent,'Nueva Función');
   }
 
 }
