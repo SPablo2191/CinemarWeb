@@ -1,4 +1,4 @@
-<p-table [columns]="cols" [value]="items" responsiveLayout="stack" [tableStyle]="{'min-width': '50rem'}">
+<p-table [columns]="cols" [value]="items" [rows]="4" [paginator]="true" responsiveLayout="stack" [tableStyle]="{'min-width': '50rem'}">
     <ng-template pTemplate="header" let-columns>
         <tr>
             <th *ngFor="let col of columns">
@@ -13,7 +13,7 @@
                 {{rowData[col.field]}}
             </td>
             <td>
-                <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded"></button>
+                <button pButton pRipple type="button" icon="pi pi-check" pTooltip="Seleccionar" (click)="this.ref.close(rowData)" class="p-button-rounded"></button>
             </td>
         </tr>
     </ng-template>

@@ -32,5 +32,9 @@ export class ShowsCrudTableComponent extends crud implements OnInit {
   override add(){
     this.getDialog(ShowsEditCrudDialogComponent,'Nueva Función');
   }
+  override edit(item : Show): void {
+    console.log(item);
+    this.getDialog(ShowsEditCrudDialogComponent,` ${item.pelicula.title}`,item);
+  }
 
 }
