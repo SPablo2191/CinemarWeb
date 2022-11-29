@@ -7,6 +7,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { ReservationCRUDTableComponent } from './components/reservation-crudtable/reservation-crudtable.component';
 import { PrimeNgImportsModule } from 'src/app/prime-ng-imports/prime-ng-imports.module';
 import { ReservationEditCrudDialogComponent } from './components/reservation-edit-crud-dialog/reservation-edit-crud-dialog.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ReservationEditCrudDialogComponent } from './components/reservation-edi
     CommonModule,
     ReservationsRoutingModule,
     ComponentsModule,
-    PrimeNgImportsModule
+    PrimeNgImportsModule,
+    ReactiveFormsModule
   ]
 })
 export class ReservationsModule { }

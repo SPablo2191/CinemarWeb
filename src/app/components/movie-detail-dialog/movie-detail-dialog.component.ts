@@ -18,9 +18,9 @@ export class MovieDetailDialogComponent implements OnInit,OnDestroy {
   subscriptions$ : Subscription = new Subscription();
 
   cols : Column [] = [
-    { field: 'sala', header: 'Sala' },
-    { field: 'hora', header: 'Hora' },
-    { field: 'hora', header: 'Dia' },
+    { field: 'sala', header: 'Sala' } as Column,
+    { field: 'hora', header: 'Hora' } as Column,
+    { field: 'hora', header: 'Dia' } as Column,
   ];
   constructor(
     public ref: DynamicDialogRef,

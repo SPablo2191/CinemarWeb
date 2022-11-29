@@ -1,1 +1,51 @@
-
+<!-- <app-ui-select-item-table [cols]="" [items]=""></app-ui-select-item-table> -->
+<form [formGroup]="formGroup" (submit)="submit()">
+    <div class="formgrid grid">
+      <div class="col-4 md:col-1 my-3 flex-column">
+        <button
+          pButton
+          pRipple
+          type="button"
+          pTooltip="Seleccionar función"
+          tooltipPosition="bottom"
+          (click)="getShow()"
+          icon="pi pi-plus"
+          class="p-button-rounded p-button-sm"
+        ></button>
+      </div>
+      <div class="col-8 md:col-6 flex-column">
+        <app-ui-input
+          [group]="formGroup"
+          name="funcion"
+          [readOnly]="true"
+          placeholder="Función"
+        ></app-ui-input>
+      </div>
+      <div class="col-8 md:col-3 flex-column">
+        <app-ui-input
+          [group]="formGroup"
+          name="sala"
+          [readOnly]="true"
+          placeholder="Sala"
+        ></app-ui-input>
+      </div>
+      <div class="col-8 md:col-2 flex-column">
+        <app-ui-input
+          [group]="formGroup"
+          name="tipoSala"
+          [readOnly]="true"
+          placeholder="Tipo"
+        ></app-ui-input>
+      </div>
+      <div class="col-8 md:col-4 flex-column" *ngIf="fechaFuncion">
+        <p class="text-lg">Fecha: {{fechaFuncion | date: 'dd/M/yyyy'}} </p>
+      </div>
+      <div class="col-8 md:col-6 flex-column" *ngIf="fechaFuncion">
+        <p class="text-lg">Hora: {{fechaFuncion | date: 'H:mm'}} </p>
+      </div>
+    </div>
+    <div class="flex justify-content-center">
+      <button pButton pRipple  type="submit" label="Reservar" class="p-button-raised"></button>
+    </div>
+  </form>
+  

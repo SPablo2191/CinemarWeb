@@ -1,7 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { map, Subscription } from 'rxjs';
+import {
+  DialogService,
+  DynamicDialogConfig,
+  DynamicDialogRef,
+} from 'primeng/dynamicdialog';
+import { filter, map, Subscription } from 'rxjs';
 import { UiSelectItemTableComponent } from 'src/app/components/ui-select-item-table/ui-select-item-table.component';
 import { abstractForm } from 'src/app/core/classes/abstract-form';
 import { Column } from 'src/app/core/models/Column';
@@ -13,78 +17,87 @@ import { RoomsService } from 'src/app/project/services/rooms.service';
 
 @Component({
   selector: 'app-shows-edit-crud-dialog',
-  providers: [DialogService,DynamicDialogRef],
+  providers: [DialogService, DynamicDialogRef],
   templateUrl: './shows-edit-crud-dialog.component.html',
-  styleUrls: ['./shows-edit-crud-dialog.component.css']
+  styleUrls: ['./shows-edit-crud-dialog.component.css'],
 })
-export class ShowsEditCrudDialogComponent extends abstractForm implements OnInit,OnDestroy {
-  ref! : DynamicDialogRef;
-  data : Show = this.config.data;
-  subsiscriptions$ : Subscription = new Subscription();
-  currentDate = new Date()
-  constructor(private fb : FormBuilder,
-    private dialogService : DialogService,
-    private roomService : RoomsService,
+export class ShowsEditCrudDialogComponent
+  extends abstractForm
+  implements OnInit, OnDestroy
+{
+  ref!: DynamicDialogRef;
+  data: Show = this.config.data;
+  subsiscriptions$: Subscription = new Subscription();
+  constructor(
+    private fb: FormBuilder,
+    private dialogService: DialogService,
+    private roomService: RoomsService,
     public config: DynamicDialogConfig,
-    private movieService : MoviesService) {
+    private movieService: MoviesService
+  ) {
     super();
-   }
+  }
   ngOnDestroy(): void {
     this.subsiscriptions$.unsubscribe();
   }
 
   ngOnInit(): void {
     this.createForm();
-    if(this.data.sala){
+    if (this.data.sala) {
       console.log(`hola ${this.data.sala}`);
-      
-      this.formGroup.controls["sala"].setValue(this.data.sala.nombre);
-      this.formGroup.controls["tipoSala"].setValue(this.data.sala.tipoSala.nombre);
-      this.formGroup.controls["pelicula"].setValue(this.data.pelicula.title);
-      this.formGroup.controls["fechaFuncion"].setValue(this.data.fechaFuncion);
+
+      this.formGroup.controls['sala'].setValue(this.data.sala.nombre);
+      this.formGroup.controls['tipoSala'].setValue(
+        this.data.sala.tipoSala.nombre
+      );
+      this.formGroup.controls['pelicula'].setValue(this.data.pelicula.title);
+      this.formGroup.controls['fechaFuncion'].setValue(this.data.fechaFuncion);
     }
-    
-    
   }
-  getRoom(){
+  getRoom() {
     let cols = [
-      {field : 'nombre',header :'Nombre'},
-      {field : 'cantidadButacas', header : 'Cantidad'}
+      { field: 'nombre', header: 'Nombre' },
+      { field: 'cantidadButacas', header: 'Cantidad' },
     ];
-    this.ref = this.dialogService.open(UiSelectItemTableComponent,{
-      header:'Añadir sala',
-      data : {cols : cols,api : this.roomService}
+    this.ref = this.dialogService.open(UiSelectItemTableComponent, {
+      header: 'Añadir sala',
+      data: { cols: cols, api: this.roomService },
     });
-    this.subsiscriptions$ = this.ref.onClose.pipe(
-      map((res : Room)=>{
-        console.log(res);
-        this.formGroup.controls["sala"].setValue(res.nombre);
-        this.formGroup.controls["tipoSala"].setValue(res.tipoSala.nombre);
-        
-      })
-    ).subscribe();
+    this.subsiscriptions$ = this.ref.onClose
+      .pipe(
+        filter((response) => !!response),
+        map((response: Room) => {
+          console.log(response);
+          this.formGroup.controls['sala'].setValue(response.nombre);
+          this.formGroup.controls['tipoSala'].setValue(
+            response.tipoSala.nombre
+          );
+        })
+      )
+      .subscribe();
   }
 
-  getMovie(){
-    let cols = [
-      {field : 'title',header :'Titulo'}
-    ];
-    this.ref = this.dialogService.open(UiSelectItemTableComponent,{
-      header:'Añadir pelicula',
-      data : {cols : cols,api : this.movieService}
+  getMovie() {
+    let cols = [{ field: 'title', header: 'Titulo' }];
+    this.ref = this.dialogService.open(UiSelectItemTableComponent, {
+      header: 'Añadir pelicula',
+      data: { cols: cols, api: this.movieService },
     });
-    this.subsiscriptions$ = this.ref.onClose.pipe(
-      map((res : Movie)=>{
-        console.log(res);
-        this.formGroup.controls["pelicula"].setValue(res.title);
-      })
-    ).subscribe();
+    this.subsiscriptions$ = this.ref.onClose
+      .pipe(
+        filter((response) => !!response),
+        map((response: Movie) => {
+          console.log(response);
+          this.formGroup.controls['pelicula'].setValue(response.title);
+        })
+      )
+      .subscribe();
   }
   override createForm() {
     this.formGroup = this.fb.group({
       pelicula: [null],
       sala: [null],
-      tipoSala : [],
+      tipoSala: [],
       fechaFuncion: [],
     });
   }
