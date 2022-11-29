@@ -18,6 +18,6 @@ export class ReservationCRUDTableComponent extends crud implements OnInit {
 
   ngOnInit(): void {}
   override add(){
-    this.getDialog(ReservationEditCrudDialogComponent,'nueva Reservación');
+    this.getDialog(ReservationEditCrudDialogComponent,'Nueva reservación');
   }
 }

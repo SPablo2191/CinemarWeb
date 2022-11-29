@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 import {
   DialogService,
   DynamicDialogConfig,
@@ -33,9 +34,10 @@ export class ShowsEditCrudDialogComponent
     private dialogService: DialogService,
     private roomService: RoomsService,
     public config: DynamicDialogConfig,
-    private movieService: MoviesService
+    private movieService: MoviesService,
+    messageService : MessageService
   ) {
-    super();
+    super(messageService);
   }
   ngOnDestroy(): void {
     this.subsiscriptions$.unsubscribe();

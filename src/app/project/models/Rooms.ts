@@ -4,6 +4,7 @@ export interface Room{
     tipoSala : roomType;
     cantidadButacas : number;
     fechaRegistro : Date;
+    precio : number;
 
 }
 export interface roomType{

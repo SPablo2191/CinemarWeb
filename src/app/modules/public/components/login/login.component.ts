@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 import { abstractForm } from 'src/app/core/classes/abstract-form';
 
 @Component({
@@ -9,8 +10,8 @@ import { abstractForm } from 'src/app/core/classes/abstract-form';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent extends abstractForm implements OnInit {
-  constructor(protected fb: FormBuilder) {
-    super();
+  constructor(protected fb: FormBuilder,messageService : MessageService) {
+    super(messageService);
   }
 
   ngOnInit(): void {

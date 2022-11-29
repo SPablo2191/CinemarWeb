@@ -4,4 +4,5 @@ export interface Seat{
     fila : number;
     columna : number;
     nombre : number;
+    ocupado : boolean;
 }

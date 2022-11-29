@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { abstractForm } from 'src/app/core/classes/abstract-form';
 import { Room } from 'src/app/project/models/Rooms';
@@ -20,9 +21,10 @@ export class RoomEditCrudDialogComponent
   constructor(
     protected fb: FormBuilder,
     public ref: DynamicDialogRef,
-    public config: DynamicDialogConfig
+    public config: DynamicDialogConfig,
+    messageService : MessageService
   ) {
-    super();
+    super(messageService);
   }
 
   ngOnInit(): void {

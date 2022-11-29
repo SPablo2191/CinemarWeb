@@ -44,8 +44,24 @@
         <p class="text-lg">Hora: {{fechaFuncion | date: 'H:mm'}} </p>
       </div>
     </div>
+    <div *ngIf="seats">
+      <p class="text-2xl">Butacas Disponibles</p>
+      <div class="flex justify-content-center">
+        <p class="text-2xl border-500 border-round px-8 border-2">Pantalla</p>
+      </div>
+      <div class="flex justify-content-center" *ngFor="let row of seats | async; let i = index">
+        <p>Fila: {{i+1}}</p>
+          <div *ngFor="let item of $any(row)">
+            <button pButton  pRipple type="button" (click)="seleccionarButaca(item)" pTooltip="{{item.nombre}}" tooltipPosition="top" icon="pi pi-user" class=" m-3" [ngClass]="{ 'p-button-danger' : item.ocupado ,'p-button-success' : !item.ocupado}"></button>
+          </div>
+      </div>
+    </div>
+    <div class="flex justify-content-end" *ngIf="total != 0">
+      <p class="text-3xl">Total: {{total | currency}}</p>
+    </div>
     <div class="flex justify-content-center">
       <button pButton pRipple  type="submit" label="Reservar" class="p-button-raised"></button>
     </div>
   </form>
   
+ 

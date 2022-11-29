@@ -5,7 +5,9 @@ import { AppComponent } from './app.component';
 import {  HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { DialogService } from 'primeng/dynamicdialog';
+import { MessageService } from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
 @NgModule({
   declarations: [
     AppComponent
@@ -16,9 +18,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastModule
   ],
-  providers: [],
+  providers : [
+    DialogService,
+    MessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
