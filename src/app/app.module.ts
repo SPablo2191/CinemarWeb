@@ -7,7 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogService } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
-import {ToastModule} from 'primeng/toast';
+import { ComponentsModule } from './components/components.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -19,7 +20,7 @@ import {ToastModule} from 'primeng/toast';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastModule
+    ComponentsModule
   ],
   providers : [
     DialogService,

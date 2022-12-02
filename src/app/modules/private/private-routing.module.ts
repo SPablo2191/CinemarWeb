@@ -14,6 +14,7 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
+        title: 'Salas',
         path: 'rooms',
         loadChildren: () =>
           import('./components/movie-rooms/movie-rooms.module').then(
@@ -21,15 +22,16 @@ const routes: Routes = [
           ),
       },
       {
+        title: 'Mis Reservas',
         path: 'reservations',
         loadChildren: () =>
           import('./components/reservations/reservations.module').then(
             (m) => m.ReservationsModule
           ),
       },
-      { path: 'shows', loadChildren: () => import('./shows/shows.module').then(m => m.ShowsModule) },
-      { path: 'discounts', loadChildren: () => import('./components/discounts/discounts.module').then(m => m.DiscountsModule) },
-      { path: 'users', loadChildren: () => import('./components/users/users.module').then(m => m.UsersModule) },
+      { title: 'Funciones', path: 'shows', loadChildren: () => import('./shows/shows.module').then(m => m.ShowsModule) },
+      { title: 'Descuentos', path: 'discounts', loadChildren: () => import('./components/discounts/discounts.module').then(m => m.DiscountsModule) },
+      {title: 'Usuarios', path: 'users', loadChildren: () => import('./components/users/users.module').then(m => m.UsersModule) },
     ],
   },
 ];

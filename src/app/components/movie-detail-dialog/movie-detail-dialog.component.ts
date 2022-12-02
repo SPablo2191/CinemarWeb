@@ -17,11 +17,11 @@ export class MovieDetailDialogComponent implements OnInit,OnDestroy {
   shows : Show[] = [];
   subscriptions$ : Subscription = new Subscription();
 
-  cols : Column [] = [
-    { field: 'sala', header: 'Sala' } as Column,
-    { field: 'hora', header: 'Hora' } as Column,
-    { field: 'hora', header: 'Dia' } as Column,
-  ];
+  // cols : Column [] = [
+  //   { field: 'sala', header: 'Sala' } as Column,
+  //   { field: 'sala', header: 'Sala',subfield1:'tipoSala',subfield2: 'nombre' } as Column,
+  //   { field: 'fechaFuncion', header: 'Fecha de Función',pipe:'date' } as Column,
+  // ];
   constructor(
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig,

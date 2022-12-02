@@ -13,7 +13,7 @@ import {TabViewModule} from 'primeng/tabview';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {TableModule} from 'primeng/table';
 import {ToolbarModule} from 'primeng/toolbar';
-
+import {ToastModule} from 'primeng/toast';
 import {CalendarModule} from 'primeng/calendar';
 @NgModule({
   exports: [
@@ -31,7 +31,8 @@ import {CalendarModule} from 'primeng/calendar';
     ProgressSpinnerModule,
     TableModule,
     ToolbarModule,
-    CalendarModule
+    CalendarModule,
+    ToastModule
   ],
 })
 export class PrimeNgImportsModule {}

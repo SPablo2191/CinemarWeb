@@ -15,6 +15,7 @@ import { UiProgressSpinnerComponent } from './ui-progress-spinner/ui-progress-sp
 import { UiDynamicTableComponent } from './ui-dynamic-table/ui-dynamic-table.component';
 import { UiCalendarComponent } from './ui-calendar/ui-calendar.component';
 import { UiSelectItemTableComponent } from './ui-select-item-table/ui-select-item-table.component';
+import { UiToastComponent } from './ui-toast/ui-toast.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { UiSelectItemTableComponent } from './ui-select-item-table/ui-select-ite
     UiProgressSpinnerComponent,
     UiDynamicTableComponent,
     UiCalendarComponent,
-    UiSelectItemTableComponent
+    UiSelectItemTableComponent,
+    UiToastComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,8 @@ import { UiSelectItemTableComponent } from './ui-select-item-table/ui-select-ite
     UiProgressSpinnerComponent,
     UiDynamicTableComponent,
     UiCalendarComponent,
-    UiSelectItemTableComponent
+    UiSelectItemTableComponent,
+    UiToastComponent
   ]
 })
 export class ComponentsModule { }

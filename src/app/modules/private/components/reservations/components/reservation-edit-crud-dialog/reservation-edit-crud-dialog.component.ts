@@ -48,7 +48,7 @@ export class ReservationEditCrudDialogComponent
       fechaFuncion: [],
       horaFuncion: [],
       fechaRegistro: [],
-      butaca: [],
+      butaca: [this.selectedSeats],
     });
   }
   getShow() {
@@ -82,7 +82,7 @@ export class ReservationEditCrudDialogComponent
     }
     if(this.selectedSeats.includes(seat)){
       console.log('holis');
-      // this.addMessageService('custom','No puede seleccionar el mismo asiento 2 veces','select','');
+      this.addMessageService('warn','Advertencia','warn','No puede seleccionar el mismo asiento 2 veces');
       return;
     }
     this.selectedSeats.push(seat);
