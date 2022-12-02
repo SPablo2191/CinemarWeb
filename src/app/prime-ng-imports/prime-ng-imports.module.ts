@@ -15,6 +15,8 @@ import {TableModule} from 'primeng/table';
 import {ToolbarModule} from 'primeng/toolbar';
 import {ToastModule} from 'primeng/toast';
 import {CalendarModule} from 'primeng/calendar';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {InputNumberModule} from 'primeng/inputnumber';
 @NgModule({
   exports: [
     PasswordModule,
@@ -32,7 +34,9 @@ import {CalendarModule} from 'primeng/calendar';
     TableModule,
     ToolbarModule,
     CalendarModule,
-    ToastModule
+    ToastModule,
+    InputNumberModule,
+    InputTextareaModule
   ],
 })
 export class PrimeNgImportsModule {}

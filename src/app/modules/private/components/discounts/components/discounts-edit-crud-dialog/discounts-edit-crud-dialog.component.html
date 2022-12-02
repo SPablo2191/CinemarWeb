@@ -1,0 +1,15 @@
+<form [formGroup]="formGroup">
+    <app-ui-dropdown></app-ui-dropdown>
+  <app-ui-input-number
+    [group]="formGroup"
+    name="porcentaje"
+    type="percent"
+    label="Porcentaje"
+    suffix="%"
+  ></app-ui-input-number>
+  <app-ui-input-text-area
+    [group]="formGroup"
+    name="descripcion"
+    label="Descripción"
+  ></app-ui-input-text-area>
+</form>

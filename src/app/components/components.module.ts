@@ -16,6 +16,9 @@ import { UiDynamicTableComponent } from './ui-dynamic-table/ui-dynamic-table.com
 import { UiCalendarComponent } from './ui-calendar/ui-calendar.component';
 import { UiSelectItemTableComponent } from './ui-select-item-table/ui-select-item-table.component';
 import { UiToastComponent } from './ui-toast/ui-toast.component';
+import { UiInputNumberComponent } from './ui-input-number/ui-input-number.component';
+import { UiInputTextAreaComponent } from './ui-input-text-area/ui-input-text-area.component';
+import { UiDropdownComponent } from './ui-dropdown/ui-dropdown.component';
 
 
 @NgModule({
@@ -33,7 +36,10 @@ import { UiToastComponent } from './ui-toast/ui-toast.component';
     UiDynamicTableComponent,
     UiCalendarComponent,
     UiSelectItemTableComponent,
-    UiToastComponent
+    UiToastComponent,
+    UiInputNumberComponent,
+    UiInputTextAreaComponent,
+    UiDropdownComponent
   ],
   imports: [
     CommonModule,
@@ -51,7 +57,10 @@ import { UiToastComponent } from './ui-toast/ui-toast.component';
     UiDynamicTableComponent,
     UiCalendarComponent,
     UiSelectItemTableComponent,
-    UiToastComponent
+    UiToastComponent,
+    UiInputNumberComponent,
+    UiInputTextAreaComponent,
+    UiDropdownComponent
   ]
 })
 export class ComponentsModule { }

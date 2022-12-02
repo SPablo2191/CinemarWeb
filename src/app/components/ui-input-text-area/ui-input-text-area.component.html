@@ -1,0 +1,17 @@
+<div class="field" [formGroup]="group">
+  <label for="username2" class="text-gray-700">{{ label }}</label>
+  <div class="p-inputgroup">
+    <textarea
+      id="username2"
+      [formControlName]="name"
+      [placeholder]="placeholder"
+      (input)="onInput()"
+      rows="5"
+      cols="30"
+      pInputTextarea
+    ></textarea>
+  </div>
+  <small *ngIf="valid" id="username2-help" class="p-error block">{{
+    errorMessage
+  }}</small>
+</div>

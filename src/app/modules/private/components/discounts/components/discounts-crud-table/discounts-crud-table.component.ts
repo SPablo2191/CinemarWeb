@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from 'primeng/dynamicdialog';
 import { crud } from 'src/app/core/classes/crud.class';
+import { DiscountsEditCrudDialogComponent } from '../discounts-edit-crud-dialog/discounts-edit-crud-dialog.component';
 
 @Component({
   selector: 'app-discounts-crud-table',
@@ -16,5 +17,7 @@ export class DiscountsCrudTableComponent extends crud implements OnInit {
 
   ngOnInit(): void {
   }
-
+  override add(){
+    this.getDialog(DiscountsEditCrudDialogComponent,'Nuevo Discuento');
+  }
 }

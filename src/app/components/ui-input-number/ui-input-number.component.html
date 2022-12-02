@@ -1,0 +1,18 @@
+<div class="field" [formGroup]="group">
+  <label for="input" class="text-gray-700">{{ label }}</label>
+  <div class="p-inputgroup">
+    <p-inputNumber
+      id="input"
+      inputId="{{ type }}"
+      [prefix]="prefix"
+      [suffix]="suffix"
+      [formControlName]="name"
+      [placeholder]="placeholder"
+      (onInput)="onInput()"
+    >
+    </p-inputNumber>
+  </div>
+  <small *ngIf="valid" id="input-help" class="p-error block">{{
+    errorMessage
+  }}</small>
+</div>

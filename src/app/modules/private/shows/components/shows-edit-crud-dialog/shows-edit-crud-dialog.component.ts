@@ -35,7 +35,7 @@ export class ShowsEditCrudDialogComponent
     private roomService: RoomsService,
     public config: DynamicDialogConfig,
     private movieService: MoviesService,
-    messageService : MessageService
+    messageService: MessageService
   ) {
     super(messageService);
   }
