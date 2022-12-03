@@ -1,1 +1,17 @@
-<p>ui-dropdown works!</p>
+<div class="field" [formGroup]="group">
+  <label for="dropdown" class="text-gray-700">{{ label }}</label>
+  <div class="flex">
+    <p-dropdown
+      id="dropdown"
+      optionLabel="{{label}}"
+      [options]="options"
+      [formControlName]="name"
+      (onChange)="onInput()"
+      [placeholder]="placeholder"
+      [showClear]="true"
+    ></p-dropdown>
+  </div>
+  <small *ngIf="valid" id="dropdown-help" class="p-error block">{{
+    errorMessage
+  }}</small>
+</div>

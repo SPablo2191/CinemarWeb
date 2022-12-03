@@ -12,6 +12,15 @@ export class DiscountsEditCrudDialogComponent
   extends abstractForm
   implements OnInit
 {
+  dias : any[] = [
+    {'Dia' : 'Lunes'},
+    {'Dia' : 'Martes'},
+    {'Dia' : 'Miercoles'},
+    {'Dia' : 'Jueves'},
+    {'Dia' : 'Viernes'},
+    {'Dia' : 'Sabado'},
+    {'Dia' : 'Domingo'}
+  ];
   constructor(messageService: MessageService, protected fb: FormBuilder) {
     super(messageService);
   }

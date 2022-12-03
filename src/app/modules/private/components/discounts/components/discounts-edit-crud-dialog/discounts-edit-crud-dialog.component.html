@@ -1,5 +1,11 @@
-<form [formGroup]="formGroup">
-    <app-ui-dropdown></app-ui-dropdown>
+<form [formGroup]="formGroup" (submit)="submit()">
+    <app-ui-dropdown
+      [group]="formGroup"
+      name="dia"
+      label="Dia"
+      [options]="dias"
+      placeholder="Seleccione un dia..."
+    ></app-ui-dropdown>
   <app-ui-input-number
     [group]="formGroup"
     name="porcentaje"
@@ -12,4 +18,7 @@
     name="descripcion"
     label="Descripción"
   ></app-ui-input-text-area>
+  <div class="flex justify-content-center">
+    <button pButton pRipple  type="submit" label="Registrar" class="p-button-raised"></button>
+  </div>
 </form>
