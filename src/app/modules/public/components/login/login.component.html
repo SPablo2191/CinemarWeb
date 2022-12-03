@@ -10,7 +10,7 @@
         </p>
       </div>
       <div class="md: w-6 px-4">
-        <div class="">
+        <form [formGroup]="formGroup" (submit)="submit()">
           <div class="block" style="width: 237px;">
             <app-ui-input
             [errorMessage]="'Ingrese nombre de usuario valido'"
@@ -21,18 +21,18 @@
             ></app-ui-input>
           </div>
           <div class="block">
-            <app-ui-password-input [label]="'Contraseña'"></app-ui-password-input>
+            <app-ui-password-input [group]="formGroup" name="password" [label]="'Contraseña'"></app-ui-password-input>
           </div>
-        </div>
-        <div class="block p-1 text-center ">
-          <div class="flex ">
-            <app-ui-link-label
+          <div class="block p-1 text-center ">
+            <div class="flex ">
+              <app-ui-link-label
               [label]="'Registrarse Ahora'"
               [routeLink]="['/signin']"
-            ></app-ui-link-label>
-            <p-button label="ingresar" [routerLink]="['/home']" icon="pi pi-arrow-right"></p-button>
+              ></app-ui-link-label>
+              <p-button label="ingresar" type="submit"  icon="pi pi-arrow-right"></p-button>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>

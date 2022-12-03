@@ -24,6 +24,8 @@ export class SigninComponent extends abstractForm implements OnInit {
       fechaNac: [null],
       telefono: [null],
       nombreUsuario: [null],
+      password : [],
+      repPassword :[]
     });
   }
 }

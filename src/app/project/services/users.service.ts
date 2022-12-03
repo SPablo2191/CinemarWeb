@@ -5,11 +5,12 @@ import { pathnameEnum } from '../enums/pathname.enum';
 import { BaseService } from './base.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersService extends BaseService {
   override serverUrl = `${environment.apiUrl}${pathnameEnum.users}`;
-  constructor( httpClient: HttpClient) {
+  constructor(httpClient: HttpClient) {
     super(httpClient);
   }
+  
 }

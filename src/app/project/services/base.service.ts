@@ -11,6 +11,9 @@ export class BaseService {
     const url = `${this.serverUrl}`
     return this.httpClient.get<any []>(url);
   }
+  post(data : any){
+    return this.httpClient.post(this.serverUrl!,data);
+  }
   getId(id : number) : Observable<any []> {
     const url = `${this.serverUrl}/${id}`
     return this.httpClient.get<any []>(url);
