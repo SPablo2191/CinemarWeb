@@ -9,6 +9,7 @@ import { RoomsCRUDTableComponent } from './components/rooms-crudtable/rooms-crud
 import { PrimeNgImportsModule } from 'src/app/prime-ng-imports/prime-ng-imports.module';
 import { RoomEditCrudDialogComponent } from './components/room-edit-crud-dialog/room-edit-crud-dialog.component';
 import { RoomRowsTableComponent } from './components/room-rows-table/room-rows-table.component';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 @NgModule({
   declarations: [
     MovieRoomsComponent,
@@ -23,6 +24,10 @@ import { RoomRowsTableComponent } from './components/room-rows-table/room-rows-t
     ReactiveFormsModule,
     FormsModule,
     PrimeNgImportsModule 
+  ],
+  providers : [
+    DynamicDialogConfig,
+    DynamicDialogRef
   ]
 })
 export class MovieRoomsModule { }

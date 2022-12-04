@@ -34,18 +34,35 @@ export class RoomsCRUDTableComponent extends crud implements OnInit {
     this.subscriptions$ = this.roomsService
       .get()
       .pipe(
-        map((rooms : Room []) => {
-          this.items = rooms;
+        tap((result)=> console.log(result)),
+        map((result) => {
+          result.forEach((element) => {
+            this.items.push({
+              idSala: element[0],
+              tipoSala: element[1],
+              nombre: element[2],
+              fechaRegistro: element[3],
+              cantidadButacas : element[4]
+            } as Room);
+          });
+          console.log(this.items);
+          
+          // this.items = rooms;
         })
       )
       .subscribe();
   }
   override add() {
-    this.getDialog(RoomEditCrudDialogComponent,'Nueva Sala');
+    this.getDialog(RoomEditCrudDialogComponent, 'Nueva Sala');
+    this.ref.onClose.pipe(
+      map(response=>{
+        this.get();
+      })
+    ).subscribe();
   }
 
   override edit(room: Room): void {
-    this.getDialog(RoomEditCrudDialogComponent,'Nueva Sala',room);
+    this.getDialog(RoomEditCrudDialogComponent, room.nombre , room);
   }
   override delete(room: Room): void {
     throw new Error('Method not implemented.');

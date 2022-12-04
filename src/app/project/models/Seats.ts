@@ -3,6 +3,6 @@ export interface Seat{
     idSala : number;
     fila : number;
     columna : number;
-    nombre : number;
+    nombre : string;
     ocupado : boolean;
 }

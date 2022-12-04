@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 import { Seat } from 'src/app/project/models/Seats';
 
 @Component({
@@ -8,9 +9,10 @@ import { Seat } from 'src/app/project/models/Seats';
   styleUrls: ['./room-rows-table.component.css'],
 })
 export class RoomRowsTableComponent implements OnInit {
-  @Input() formGroup!: FormGroup;
   total: number = 0;
+  @Input() formGroup!: FormGroup;
   @Input() items: Seat[] = [];
+  @Output() totalEmitter = new EventEmitter<number>();
   @Output() itemsChange = new EventEmitter<Seat[]>();
   fila: number = 1;
   constructor() {}
@@ -30,5 +32,6 @@ export class RoomRowsTableComponent implements OnInit {
   }
   getTotal(quantity: string) {
     this.total += +quantity;
+    this.totalEmitter.emit(this.total);
   }
 }

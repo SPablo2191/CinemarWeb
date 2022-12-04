@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { tap } from 'rxjs';
 import { abstractForm } from 'src/app/core/classes/abstract-form';
@@ -15,6 +16,7 @@ import { UsersService } from 'src/app/project/services/users.service';
 export class LoginComponent extends abstractForm implements OnInit {
   constructor(
     protected fb: FormBuilder,
+    protected router : Router,
     messageService: MessageService,
     private userService: UsersService
   ) {
@@ -39,8 +41,7 @@ export class LoginComponent extends abstractForm implements OnInit {
     data.contrasena = this.formGroup.controls['password'].value;
     this.userService.post(data).pipe(
       tap(response=>{
-        console.log(response);
-        
+        this.router.navigate(['/home'])
       })
     ).subscribe();
     
