@@ -2,7 +2,7 @@
   <div class="text-center">
     <p-table
       #dt
-      [value]="items"
+      [value]="(items$ |async)!"
       [paginator]="true"
       [rows]="5"
       responsiveLayout="stack"
@@ -71,7 +71,7 @@
       </ng-template>
       <ng-template pTemplate="summary">
         <div class="flex align-items-center justify-content-between">
-          Hay en total {{ items ? items.length : 0 }} Salas.
+          <!-- Hay en total {{ (items$|async)! ? (items$|async)!.length : 0 }} Salas. -->
         </div>
       </ng-template>
     </p-table>

@@ -11,10 +11,11 @@ import { UiSelectItemTableComponent } from 'src/app/components/ui-select-item-ta
 import { abstractForm } from 'src/app/core/classes/abstract-form';
 import { Column } from 'src/app/core/models/Column';
 import { Movie } from 'src/app/project/models/Movies';
-import { Room } from 'src/app/project/models/Rooms';
+import { Room, roomType } from 'src/app/project/models/Rooms';
 import { Show } from 'src/app/project/models/Shows';
 import { MoviesService } from 'src/app/project/services/movies.service';
 import { RoomsService } from 'src/app/project/services/rooms.service';
+import { ShowsService } from 'src/app/project/services/shows.service';
 
 @Component({
   selector: 'app-shows-edit-crud-dialog',
@@ -35,6 +36,7 @@ export class ShowsEditCrudDialogComponent
     private roomService: RoomsService,
     public config: DynamicDialogConfig,
     private movieService: MoviesService,
+    private showService : ShowsService,
     messageService: MessageService
   ) {
     super(messageService);
@@ -56,6 +58,7 @@ export class ShowsEditCrudDialogComponent
       this.formGroup.controls['fechaFuncion'].setValue(this.data.fechaFuncion);
     }
   }
+
   getRoom() {
     let cols = [
       { field: 'nombre', header: 'Nombre' },
@@ -63,7 +66,7 @@ export class ShowsEditCrudDialogComponent
     ];
     this.ref = this.dialogService.open(UiSelectItemTableComponent, {
       header: 'Añadir sala',
-      data: { cols: cols, api: this.roomService },
+      data: { cols: cols, items: this.roomService.get() },
     });
     this.subsiscriptions$ = this.ref.onClose
       .pipe(
@@ -74,6 +77,7 @@ export class ShowsEditCrudDialogComponent
           this.formGroup.controls['tipoSala'].setValue(
             response.tipoSala.nombre
           );
+          this.data.sala = response;
         })
       )
       .subscribe();
@@ -83,7 +87,7 @@ export class ShowsEditCrudDialogComponent
     let cols = [{ field: 'title', header: 'Titulo' }];
     this.ref = this.dialogService.open(UiSelectItemTableComponent, {
       header: 'Añadir pelicula',
-      data: { cols: cols, api: this.movieService },
+      data: { cols: cols, items: this.movieService.get() },
     });
     this.subsiscriptions$ = this.ref.onClose
       .pipe(
@@ -91,6 +95,7 @@ export class ShowsEditCrudDialogComponent
         map((response: Movie) => {
           console.log(response);
           this.formGroup.controls['pelicula'].setValue(response.title);
+          this.data.pelicula = response;
         })
       )
       .subscribe();
@@ -102,5 +107,9 @@ export class ShowsEditCrudDialogComponent
       tipoSala: [],
       fechaFuncion: [],
     });
+  }
+  override submit(): void {
+    this.data.fechaFuncion = this.formGroup.controls['fechaFuncion'].value;
+    this.showService.post(this.data).subscribe();
   }
 }

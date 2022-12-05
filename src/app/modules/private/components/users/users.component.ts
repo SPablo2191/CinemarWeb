@@ -12,8 +12,8 @@ import { UsersService } from 'src/app/project/services/users.service';
 export class UsersComponent implements OnInit {
   cols : Column [] = [
     {field : 'nombreUsuario', header : 'Usuario'} as Column,
-    {field : 'nombre', header : 'Nombre'} as Column,
-    {field : 'apellido', header : 'Apellido'} as Column,
+    {field : 'nombre', header : 'Nombre',pipe:'titlecase'} as Column,
+    {field : 'apellido', header : 'Apellido',pipe:'titlecase'} as Column,
     {field : 'DNI', header : 'DNI'} as Column,
     {field : 'fechaRegistro', header : 'Fecha de registro',pipe : 'date'} as Column,
   ];
@@ -27,10 +27,10 @@ export class UsersComponent implements OnInit {
           console.log(result);
           let aux : User = {} as User;
           aux.nombre = element[2];
-          aux.apellido = element[10];
-          aux.fechaNacimiento = element[3];
-          aux.DNI = element[4];
-          aux.nombreUsuario = element[5];
+          aux.apellido = element[3];
+          aux.fechaNacimiento = element[10];
+          aux.DNI = element[5];
+          aux.nombreUsuario = element[4];
           aux.fechaRegistro = element[9];
           this.users.push(aux);
         });

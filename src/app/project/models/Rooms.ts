@@ -8,7 +8,7 @@ export interface Room{
     fechaRegistro : Date;
     precio : number;
     butacas : Seat[];
-
+    estado : boolean;
 }
 export interface roomType{
     idTipoSala : number;

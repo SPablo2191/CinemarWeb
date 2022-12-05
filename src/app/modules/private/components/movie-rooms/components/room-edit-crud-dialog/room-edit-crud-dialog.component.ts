@@ -89,6 +89,7 @@ export class RoomEditCrudDialogComponent
       cantidadButacas: this.formGroup.controls['cantidadButacas'].value,
       nombre: this.formGroup.controls['nombre'].value,
       tipoSala : this.formGroup.controls['tipoSala'].value,
+      estado : true,
       butacas: this.setSeatName(this.formGroup.controls['butacas'].value),
     } as Room;
     console.log(data);

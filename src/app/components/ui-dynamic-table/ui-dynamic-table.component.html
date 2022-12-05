@@ -16,6 +16,9 @@
                   <span *ngIf="col.pipe === 'date'">
                     {{col.subfield1 === undefined ? (rowData[col.field] | date: 'dd/M/yyyy H:mm') : (rowData[col.field][col.subfield1]| date: 'dd/M/yyyy H:mm') }}
                   </span>
+                  <span *ngIf="col.pipe === 'titlecase'">
+                    {{col.subfield1 === undefined ? (rowData[col.field] | titlecase) : (rowData[col.field][col.subfield1]| titlecase) }}
+                  </span>
             </td>
             
         </tr>

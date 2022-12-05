@@ -11,14 +11,11 @@ import { BaseService } from 'src/app/project/services/base.service';
 })
 export class UiSelectItemTableComponent implements OnInit {
   cols: Column[] = this.config.data.cols;
-  api: BaseService = this.config.data.api;
-  items!: Observable<any[]>;
+  items: Observable<any[]> = this.config.data.items;
   constructor(
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig
   ) {}
 
-  ngOnInit(): void {
-    this.items = this.api.get();
-  }
+  ngOnInit(): void {}
 }

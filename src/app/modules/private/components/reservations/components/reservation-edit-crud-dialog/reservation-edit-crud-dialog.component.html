@@ -29,14 +29,14 @@
           placeholder="Sala"
         ></app-ui-input>
       </div>
-      <div class="col-8 md:col-2 flex-column">
+      <!-- <div class="col-8 md:col-2 flex-column">
         <app-ui-input
           [group]="formGroup"
           name="tipoSala"
           [readOnly]="true"
           placeholder="Tipo"
         ></app-ui-input>
-      </div>
+      </div> -->
       <div class="col-8 md:col-4 flex-column" *ngIf="fechaFuncion">
         <p class="text-lg">Fecha: {{fechaFuncion | date: 'dd/M/yyyy'}} </p>
       </div>

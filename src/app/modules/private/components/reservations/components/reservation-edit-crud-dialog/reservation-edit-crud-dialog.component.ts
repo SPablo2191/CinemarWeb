@@ -44,7 +44,7 @@ export class ReservationEditCrudDialogComponent
     this.formGroup = this.fb.group({
       funcion: [],
       sala: [],
-      tipoSala: [],
+      // tipoSala: [],
       fechaFuncion: [],
       horaFuncion: [],
       fechaRegistro: [],
@@ -58,7 +58,7 @@ export class ReservationEditCrudDialogComponent
     ];
     this.ref = this.dialogService.open(UiSelectItemTableComponent, {
       header: 'Seleccionar función',
-      data: { cols: cols, api: this.showService },
+      data: { cols: cols, items: this.showService.get() },
     });
     this.subscriptions$ = this.ref.onClose
       .pipe(
@@ -67,7 +67,7 @@ export class ReservationEditCrudDialogComponent
           console.log(response);
           this.formGroup.controls['funcion'].setValue(response.pelicula.title);
           this.formGroup.controls['sala'].setValue(response.sala.nombre);
-          this.formGroup.controls['tipoSala'].setValue(response.sala.tipoSala.nombre);
+          // this.formGroup.controls['tipoSala'].setValue(response.sala.tipoSala.nombre);
           this.fechaFuncion = response.fechaFuncion;
           this.precioSala = response.sala.precio;
           this.seats = this.roomService.getId(response.sala.idSala);

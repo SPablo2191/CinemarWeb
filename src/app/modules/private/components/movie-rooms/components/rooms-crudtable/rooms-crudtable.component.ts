@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { map, Subscription, tap } from 'rxjs';
+import { map, Observable, Subscription, tap } from 'rxjs';
 import { crud } from 'src/app/core/classes/crud.class';
 import { Room } from 'src/app/project/models/Rooms';
 import { RoomsService } from 'src/app/project/services/rooms.service';
@@ -15,7 +15,7 @@ import { RoomEditCrudDialogComponent } from '../room-edit-crud-dialog/room-edit-
   styleUrls: ['./rooms-crudtable.component.css'],
 })
 export class RoomsCRUDTableComponent extends crud implements OnInit {
-  items: Room[] = [];
+  items$!: Observable<Room[]>;
   subscriptions$: Subscription = new Subscription();
   constructor(
     private roomsService: RoomsService,
@@ -23,46 +23,26 @@ export class RoomsCRUDTableComponent extends crud implements OnInit {
   ) {
     super(dialogService);
   }
-  ngOnDestroy(): void {
-    this.subscriptions$.unsubscribe();
-  }
 
   ngOnInit(): void {
     this.get();
   }
   override get() {
-    this.subscriptions$ = this.roomsService
-      .get()
+    this.items$ = this.roomsService.get();
+  }
+  override add() {
+    this.getDialog(RoomEditCrudDialogComponent, 'Nueva Sala');
+    this.ref.onClose
       .pipe(
-        tap((result)=> console.log(result)),
-        map((result) => {
-          result.forEach((element) => {
-            this.items.push({
-              idSala: element[0],
-              tipoSala: element[1],
-              nombre: element[2],
-              fechaRegistro: element[3],
-              cantidadButacas : element[4]
-            } as Room);
-          });
-          console.log(this.items);
-          
-          // this.items = rooms;
+        map((response) => {
+          this.get();
         })
       )
       .subscribe();
   }
-  override add() {
-    this.getDialog(RoomEditCrudDialogComponent, 'Nueva Sala');
-    this.ref.onClose.pipe(
-      map(response=>{
-        this.get();
-      })
-    ).subscribe();
-  }
 
   override edit(room: Room): void {
-    this.getDialog(RoomEditCrudDialogComponent, room.nombre , room);
+    this.getDialog(RoomEditCrudDialogComponent, room.nombre, room);
   }
   override delete(room: Room): void {
     throw new Error('Method not implemented.');

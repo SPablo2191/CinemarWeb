@@ -15,9 +15,6 @@ export class MoviesService extends BaseService {
     super(httpClient);
   }
 
-  // getMovies(): Observable<RootObject> {
-  //   return this.httpClient.get<RootObject>(this.serverUrl);
-  // }
   getMovie(id: number): Observable<MovieDetailed> {
     let endpoint = this.serverUrl + `/${id}`;
     return this.httpClient.get<MovieDetailed>(endpoint);
