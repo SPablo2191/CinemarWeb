@@ -4,5 +4,9 @@ export interface Seat{
     fila : number;
     columna : number;
     nombre : string;
-    ocupado : boolean;
+    disponible : boolean;
+}
+export interface seatOfShow{
+    seats : any[];
+    length : number;
 }

@@ -44,15 +44,15 @@
         <p class="text-lg">Hora: {{fechaFuncion | date: 'H:mm'}} </p>
       </div>
     </div>
-    <div *ngIf="seats">
+    <div *ngIf="seats$">
       <p class="text-2xl">Butacas Disponibles</p>
       <div class="py-2">
         <p class="text-2xl border-500 text-center border-round  border-1">Pantalla</p>
       </div>
-      <div class="flex justify-content-center" *ngFor="let row of seats | async; let i = index">
+      <div class="flex justify-content-center" *ngFor="let row of seats$ | async; let i = index">
         <p class="text-lg">Fila: {{i+1}}</p>
           <div *ngFor="let item of $any(row)" >
-            <button pButton  pRipple type="button" (click)="seleccionarButaca(item)" pTooltip="{{item.nombre}}" tooltipPosition="top" icon="pi pi-user" class=" m-3" [ngClass]="{ 'p-button-danger' : item.ocupado ,'p-button-success' : !item.ocupado}"></button>
+            <button pButton  pRipple type="button" (click)="seleccionarButaca(item)" pTooltip="{{item.nombre}}" tooltipPosition="top" icon="pi pi-user" class=" m-3" [ngClass]="{ 'p-button-danger' : !item.disponible ,'p-button-success' : !item.disponible}"></button>
           </div>
       </div>
     </div>

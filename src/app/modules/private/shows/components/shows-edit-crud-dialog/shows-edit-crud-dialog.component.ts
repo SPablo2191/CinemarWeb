@@ -19,7 +19,6 @@ import { ShowsService } from 'src/app/project/services/shows.service';
 
 @Component({
   selector: 'app-shows-edit-crud-dialog',
-  providers: [DialogService, DynamicDialogRef],
   templateUrl: './shows-edit-crud-dialog.component.html',
   styleUrls: ['./shows-edit-crud-dialog.component.css'],
 })
@@ -35,6 +34,7 @@ export class ShowsEditCrudDialogComponent
     private dialogService: DialogService,
     private roomService: RoomsService,
     public config: DynamicDialogConfig,
+    private reference: DynamicDialogRef,
     private movieService: MoviesService,
     private showService : ShowsService,
     messageService: MessageService
@@ -110,6 +110,11 @@ export class ShowsEditCrudDialogComponent
   }
   override submit(): void {
     this.data.fechaFuncion = this.formGroup.controls['fechaFuncion'].value;
-    this.showService.post(this.data).subscribe();
+    this.showService.post(this.data).pipe(
+      map((response)=>{
+        console.log("hola",response);
+        this.reference.close();
+      })
+    ).subscribe();
   }
 }

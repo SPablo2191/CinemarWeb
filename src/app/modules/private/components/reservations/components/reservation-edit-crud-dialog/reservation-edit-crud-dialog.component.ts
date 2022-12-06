@@ -21,18 +21,18 @@ export class ReservationEditCrudDialogComponent
   implements OnInit
 {
   ref!: DynamicDialogRef;
-  fechaFuncion! : Date;
-  seats! : Observable<Seat[]>; 
-  selectedSeats : Seat[] = [];
-  total : number = 0;
-  precioSala! : number;
+  fechaFuncion!: Date;
+  seats$!: Observable<Seat[]>;
+  selectedSeats: Seat[] = [];
+  total: number = 0;
+  precioSala!: number;
   subscriptions$: Subscription = new Subscription();
   constructor(
     private fb: FormBuilder,
     private dialogService: DialogService,
     private showService: ShowsService,
-    private roomService : RoomsService,
-    messageService : MessageService
+    private roomService: RoomsService,
+    messageService: MessageService
   ) {
     super(messageService);
   }
@@ -52,9 +52,9 @@ export class ReservationEditCrudDialogComponent
     });
   }
   getShow() {
-    let cols : Column[] = [
+    let cols: Column[] = [
       { field: 'pelicula', subfield1: 'title', header: 'Pelicula' } as Column,
-      { field: 'fechaFuncion',pipe : 'date', header: 'Fecha y Hora' } as Column,
+      { field: 'fechaFuncion', pipe: 'date', header: 'Fecha y Hora' } as Column,
     ];
     this.ref = this.dialogService.open(UiSelectItemTableComponent, {
       header: 'Seleccionar función',
@@ -62,7 +62,7 @@ export class ReservationEditCrudDialogComponent
     });
     this.subscriptions$ = this.ref.onClose
       .pipe(
-        filter((response)=> !!response),
+        filter((response) => !!response),
         map((response: Show) => {
           console.log(response);
           this.formGroup.controls['funcion'].setValue(response.pelicula.title);
@@ -70,24 +70,28 @@ export class ReservationEditCrudDialogComponent
           // this.formGroup.controls['tipoSala'].setValue(response.sala.tipoSala.nombre);
           this.fechaFuncion = response.fechaFuncion;
           this.precioSala = response.sala.precio;
-          this.seats = this.roomService.getId(response.sala.idSala);
+          this.seats$ = this.showService.getSeats(response.idFuncion);
         })
       )
       .subscribe();
   }
-  seleccionarButaca(seat : Seat){
-    if(seat.ocupado){
+  seleccionarButaca(seat: Seat) {
+    if (!seat.disponible) {
       console.log('hola');
       return;
     }
-    if(this.selectedSeats.includes(seat)){
+    if (this.selectedSeats.includes(seat)) {
       console.log('holis');
-      this.addMessageService('warn','Advertencia','warn','No puede seleccionar el mismo asiento 2 veces');
+      this.addMessageService(
+        'warn',
+        'Advertencia',
+        'warn',
+        'No puede seleccionar el mismo asiento 2 veces'
+      );
       return;
     }
     this.selectedSeats.push(seat);
     this.total += this.precioSala;
     console.log(this.total);
-    
   }
 }

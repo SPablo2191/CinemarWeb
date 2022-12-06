@@ -37,6 +37,7 @@
           <th>Pelicula</th>
           <th>Sala</th>
           <th>Fecha de Función</th>
+          <th>Hora de Función</th>
           <th>Cantidad de butacas disponibles</th>
           <th>Acciones</th>
         </tr>
@@ -54,6 +55,10 @@
           <td>
             <span class="p-column-title font-bold">Fecha de Función</span
             >{{ show.fechaFuncion | date: "dd/M/yyyy" }}
+          </td>
+          <td>
+            <span class="p-column-title font-bold">Hora de Función</span
+            >{{ show.fechaFuncion | date: "H:mm" }}
           </td>
           <td>
             <span class="p-column-title font-bold">Cantidad</span
