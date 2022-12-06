@@ -64,7 +64,7 @@ export class ReservationEditCrudDialogComponent
       .pipe(
         filter((response) => !!response),
         map((response: Show) => {
-          console.log(response);
+          console.log(response.sala);
           this.formGroup.controls['funcion'].setValue(response.pelicula.title);
           this.formGroup.controls['sala'].setValue(response.sala.nombre);
           // this.formGroup.controls['tipoSala'].setValue(response.sala.tipoSala.nombre);

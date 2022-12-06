@@ -1,3 +1,4 @@
+import { NgIfContext } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
@@ -22,6 +23,7 @@ export class ShowsService extends BaseService {
     return this.httpClient.get<Show[]>(this.serverUrl).pipe(
       map((result) => {
         let shows: Show[] = [];
+        console.log(result);  
         result.forEach((element: any) => {
           shows.push({
             idFuncion: element[0],
@@ -29,6 +31,7 @@ export class ShowsService extends BaseService {
               idSala: element[1],
               nombre: element[10],
               tipoSala: element[9],
+              precio : element[13]
             } as Room,
             pelicula: { title: element[7] } as Movie,
             fechaFuncion: element[3],
@@ -44,15 +47,17 @@ export class ShowsService extends BaseService {
     let params = { id: id };
     return this.httpClient.get<seatOfShow>(url, { params }).pipe(
       map((response: seatOfShow) => {
-        var matrixOfSeats :any[] = [];
+        var matrixOfSeats: any[] = [];
         let seatsOfShow: Seat[] = [];
         let i = 0;
         let fila = response.seats[0][1];
         response.seats.forEach((element: any[]) => {
-          console.log(element[1]);
           // element.reduce(
-          //   (silla, value) 
+          //   (silla, value)
           // )
+          // console.log(`indice: ${i} length : ${response.length}`);
+          
+
           if (fila == element[1]) {
             seatsOfShow.push({
               idButaca: element[0],
@@ -61,24 +66,32 @@ export class ShowsService extends BaseService {
               nombre: element[3],
               disponible: element[4],
             } as Seat);
+          } else {
+            if (fila != element[1]) {
+              matrixOfSeats.push(seatsOfShow);
+              seatsOfShow = [];
+              fila = element[1];
+            }
+            seatsOfShow.push({
+              idButaca: element[0],
+              fila: element[1],
+              columna: element[2],
+              nombre: element[3],
+              disponible: element[4],
+            } as Seat);
           }
-          else {
-            matrixOfSeats[i] = seatsOfShow;
-            seatsOfShow = [];
-            fila = element[1];
-            i++;
+          if (response.length-1 == i ) {
+            matrixOfSeats.push(seatsOfShow);
           }
-          if (response.length == element[2]) {
-            matrixOfSeats[i] = seatsOfShow;
-          }
+          i++;
         });
-        console.log(matrixOfSeats);
-        
-        if (matrixOfSeats) {
-          return matrixOfSeats;
-        } else {
-          return [];
-        }
+        // matrixOfSeats.push(seatsOfShow);
+
+        return matrixOfSeats;
+        // if (matrixOfSeats) {
+        // } else {
+        //   return [];
+        // }
       })
     );
   }
