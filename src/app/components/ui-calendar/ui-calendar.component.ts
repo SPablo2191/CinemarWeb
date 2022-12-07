@@ -9,6 +9,9 @@ import { FormGroup } from '@angular/forms';
 export class UiCalendarComponent implements OnInit {
   @Input() group!: FormGroup;
   @Input() name! : string;
+  @Input() label : string = '';
+  @Input() time! : boolean;
+  @Input() touchUI! : boolean;
   @Input() date : Date = new Date();
   @Input() placeholder : string = '';
   @Output() value = new EventEmitter();

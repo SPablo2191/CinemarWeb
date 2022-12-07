@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { map } from 'rxjs';
 import { abstractForm } from 'src/app/core/classes/abstract-form';
+import { User } from 'src/app/project/models/Users';
+import { UsersService } from 'src/app/project/services/users.service';
 
 @Component({
   selector: 'app-signin',
@@ -9,7 +13,7 @@ import { abstractForm } from 'src/app/core/classes/abstract-form';
   styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent extends abstractForm implements OnInit {
-  constructor(protected fb: FormBuilder, messageService : MessageService) {
+  constructor(protected fb: FormBuilder, messageService: MessageService,private router : Router, private userService : UsersService) {
     super(messageService);
   }
 
@@ -24,8 +28,30 @@ export class SigninComponent extends abstractForm implements OnInit {
       fechaNac: [null],
       telefono: [null],
       nombreUsuario: [null],
-      password : [],
-      repPassword :[]
+      password: [],
+      repPassword: [],
+      DNI : []
     });
+  }
+  override submit(): void {
+    if(this.formGroup.controls['password'].value != this.formGroup.controls['repPassword'].value){
+      console.log("hola",this.formGroup.controls['password'].value)
+      return;
+    }
+    let data: User = {
+      nombre: this.formGroup.controls['nombre'].value,
+      apellido: this.formGroup.controls['apellido'].value,
+      correo: this.formGroup.controls['correo'].value,
+      fechaNacimiento : this.formGroup.controls['fechaNac'].value,
+      telefono: this.formGroup.controls['telefono'].value,
+      nombreUsuario: this.formGroup.controls['nombreUsuario'].value,
+      contrasena : this.formGroup.controls['password'].value,
+      DNI : this.formGroup.controls['DNI'].value,
+    } as User;
+    this.userService.register(data).pipe(
+      map((response)=>{
+        this.router.navigate(['/login'])
+      })
+    ).subscribe();
   }
 }

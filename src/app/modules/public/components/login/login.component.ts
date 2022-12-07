@@ -45,6 +45,7 @@ export class LoginComponent extends abstractForm implements OnInit {
         localStorage.setItem('access_token',response.token);
         localStorage.setItem('user',response.user);
         localStorage.setItem('idUser',response.idUser.toString());
+        localStorage.setItem('idTipoUsuario',response.idTipoUsuario.toString());
         console.log(`Bienvenido ${localStorage.getItem('user')}!`);
         
         this.router.navigate(['/home'])

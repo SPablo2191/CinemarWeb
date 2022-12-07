@@ -6,11 +6,13 @@
   </div>
     <div class="col">
       <p class="text-2xl text-gray-700">Registrarse</p>
-
+      <form [formGroup]="formGroup" (submit)="submit()">
       <app-ui-input [label]="'Nombre'" [group]="formGroup" name="nombre"></app-ui-input>
       <app-ui-input [label]="'Apellido'" [group]="formGroup" name="apellido"></app-ui-input>
       <app-ui-input [label]="'Correo'" [group]="formGroup" name="correo"></app-ui-input>
-      <app-ui-input [label]="'Fecha de Nacimiento'" [group]="formGroup" name="fechaNac"></app-ui-input>
+      <app-ui-input [label]="'DNI'" [group]="formGroup" name="DNI"></app-ui-input>
+      <app-ui-calendar [group]="formGroup" name="fechaNac" [time]="false" [touchUI]="false" label="Fecha de Nacimiento"></app-ui-calendar>
+      <!-- <app-ui-input [label]="'Fecha de Nacimiento'" [group]="formGroup" name="fechaNac"></app-ui-input> -->
       <app-ui-input [label]="'Telefono'" [group]="formGroup" name="telefono"></app-ui-input>
       <app-ui-input [label]="'Nombre de Usuario'" [group]="formGroup" name="nombreUsuario"></app-ui-input>
       <app-ui-password-input [label]="'Constraseña'" [group]="formGroup" name="password"></app-ui-password-input>
@@ -22,8 +24,9 @@
           icon="pi pi-arrow-left"
           class="px-2"
         ></p-button>
-        <p-button label="Registrar" [routerLink]="['/login']" icon="pi pi-sign-in"></p-button>
+        <p-button label="Registrar" type="submit"  icon="pi pi-sign-in"></p-button>
       </div>
+    </form>
     </div>
   </div>
 </div>
