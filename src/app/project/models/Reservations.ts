@@ -4,11 +4,12 @@ import { Show } from "./Shows";
 
 export interface Reservation{
     idReserva: number;
-    nroReserva : number;
     funcion : Show;
+    idUsuario: number;
     descuento : discount;
     fechaRegistro : Date;
     total : number;
+    seats : Seat[]
 }
 
 export interface ReservationDetail{

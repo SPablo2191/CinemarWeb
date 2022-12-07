@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { tap } from 'rxjs';
 import { abstractForm } from 'src/app/core/classes/abstract-form';
+import { Session } from 'src/app/core/models/Session';
 import { User } from 'src/app/project/models/Users';
 import { UsersService } from 'src/app/project/services/users.service';
 
@@ -40,7 +41,12 @@ export class LoginComponent extends abstractForm implements OnInit {
     data.nombreUsuario = this.formGroup.controls['username'].value;
     data.contrasena = this.formGroup.controls['password'].value;
     this.userService.post(data).pipe(
-      tap(response=>{
+      tap((response : Session)=>{
+        localStorage.setItem('access_token',response.token);
+        localStorage.setItem('user',response.user);
+        localStorage.setItem('idUser',response.idUser.toString());
+        console.log(`Bienvenido ${localStorage.getItem('user')}!`);
+        
         this.router.navigate(['/home'])
       })
     ).subscribe();

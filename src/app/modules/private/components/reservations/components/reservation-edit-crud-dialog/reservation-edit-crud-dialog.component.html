@@ -53,9 +53,12 @@
       <div class="flex justify-content-center" *ngFor="let row of seats$ | async; let i = index">
         <p class="text-lg">Fila: {{i+1}}</p>
           <div *ngFor="let item of $any(row)" >
-            <button pButton  pRipple type="button" (click)="seleccionarButaca(item)" pTooltip="{{item.nombre}}" tooltipPosition="top" icon="pi pi-user" class=" m-3" [ngClass]="{ 'p-button-danger' : !item.disponible ,'p-button-success' : !item.disponible}"></button>
+            <button pButton  pRipple type="button" (click)="selectedSeat(item)" pTooltip="{{item.nombre}}" tooltipPosition="top" icon="pi pi-user" class=" m-3" [ngClass]="{ 'p-button-danger' : !item.disponible ,'p-button-success' : item.disponible}"></button>
           </div>
       </div>
+    </div>
+    <div *ngIf="seatIsSelected">
+      <app-ui-dynamic-table [cols]="cols"  [items]="selectedSeats"></app-ui-dynamic-table>
     </div>
     <div class="flex justify-content-end" *ngIf="total != 0">
       <p class="text-3xl">Total: {{total | currency}}</p>

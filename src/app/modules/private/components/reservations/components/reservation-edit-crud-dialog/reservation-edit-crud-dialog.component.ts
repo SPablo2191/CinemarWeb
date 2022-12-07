@@ -6,6 +6,7 @@ import { filter, map, Observable, Subscription } from 'rxjs';
 import { UiSelectItemTableComponent } from 'src/app/components/ui-select-item-table/ui-select-item-table.component';
 import { abstractForm } from 'src/app/core/classes/abstract-form';
 import { Column } from 'src/app/core/models/Column';
+import { Reservation } from 'src/app/project/models/Reservations';
 import { Seat } from 'src/app/project/models/Seats';
 import { Show } from 'src/app/project/models/Shows';
 import { RoomsService } from 'src/app/project/services/rooms.service';
@@ -21,9 +22,14 @@ export class ReservationEditCrudDialogComponent
   implements OnInit
 {
   ref!: DynamicDialogRef;
+  reservationData: Reservation = {} as Reservation;
+  cols : Column[] = [
+    {field: 'nombre', header:'Asiento Seleccionado'} as Column
+  ]
   fechaFuncion!: Date;
   seats$!: Observable<Seat[]>;
   selectedSeats: Seat[] = [];
+  seatIsSelected : boolean = false;
   total: number = 0;
   precioSala!: number;
   subscriptions$: Subscription = new Subscription();
@@ -31,7 +37,7 @@ export class ReservationEditCrudDialogComponent
     private fb: FormBuilder,
     private dialogService: DialogService,
     private showService: ShowsService,
-    private roomService: RoomsService,
+    // private reservationService : reservationSe
     messageService: MessageService
   ) {
     super(messageService);
@@ -71,27 +77,48 @@ export class ReservationEditCrudDialogComponent
           this.fechaFuncion = response.fechaFuncion;
           this.precioSala = response.sala.precio;
           this.seats$ = this.showService.getSeats(response.idFuncion);
+          this.reservationData.funcion = response;
         })
       )
       .subscribe();
   }
-  seleccionarButaca(seat: Seat) {
-    if (!seat.disponible) {
-      console.log('hola');
-      return;
-    }
-    if (this.selectedSeats.includes(seat)) {
-      console.log('holis');
+  selectedSeat(seat: Seat) {
+    if (!seat.disponible && !this.selectedSeats.includes(seat)) {
       this.addMessageService(
         'warn',
         'Advertencia',
         'warn',
-        'No puede seleccionar el mismo asiento 2 veces'
+        'El asiento seleccionado ya se encuentra reservado'
       );
       return;
     }
+    seat.disponible = false;
+    if (this.selectedSeats.includes(seat)) {
+      console.log(this.selectedSeats.filter(element => element.idButaca != seat.idButaca));
+      this.selectedSeats = this.selectedSeats.filter(element => element.idButaca != seat.idButaca);
+      seat.disponible = true;
+      if(this.selectedSeats.length == 0){
+        this.seatIsSelected = false;
+      }
+      this.total -= this.precioSala;
+      return;
+      // this.addMessageService(
+      //   'warn',
+      //   'Advertencia',
+      //   'warn',
+      //   'No puede seleccionar el mismo asiento 2 veces'
+      // );
+      // return;
+    }
     this.selectedSeats.push(seat);
+    this.seatIsSelected = true;
     this.total += this.precioSala;
-    console.log(this.total);
+  }
+  override submit(): void {
+    this.formGroup.markAllAsTouched();
+    this.reservationData.seats = this.selectedSeats;
+    this.reservationData.idUsuario = +(localStorage.getItem('idUser') || 0);
+    
+    console.log(this.reservationData);
   }
 }
