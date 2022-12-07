@@ -1,6 +1,7 @@
+
 <p-table
   #dt
-  [value]="items"
+  [value]="(items$|async)!"
   [rows]="3"
   [paginator]="true"
   responsiveLayout="stack"
@@ -42,12 +43,15 @@
   <ng-template pTemplate="header">
     <tr>
       <th pSortableColumn="name" >Reserva</th>
-      <th>Pelicula</th>
+      <!-- <th>Pelicula</th>
       <th pSortableColumn="cantidad">
         Sala <p-sortIcon field="cantidad"></p-sortIcon>
-      </th>
+      </th> -->
       <th pSortableColumn="fechaRegistro" >
         Fecha de Función <p-sortIcon field="fechaRegistro"></p-sortIcon>
+      </th>
+      <th pSortableColumn="fechaRegistro" >
+        Total <p-sortIcon field="fechaRegistro"></p-sortIcon>
       </th>
       <th>Acciones</th>
     </tr>
@@ -56,18 +60,22 @@
     <tr>
       <td>
         <span class="p-column-title font-bold">Reserva</span
-        >{{ show.codigoReserva }}
+        >{{ show.idReserva }}
       </td>
-      <td>
+      <!-- <td>
         <span class="p-column-title font-bold">Pelicula</span
         >{{ show.pelicula.nombre }}
       </td>
       <td>
         <span class="p-column-title font-bold">Sala</span>{{ show.sala.nombre }}
-      </td>
+      </td> -->
       <td>
         <span class="p-column-title font-bold">fecha de Función</span
-        >{{ show.fechaFuncion | date: "dd/M/yyyy" }}
+        >{{ show.fechaRegistro | date: "dd/M/yyyy" }}
+      </td>
+      <td>
+        <span class="p-column-title font-bold">Total</span
+        >{{ show.total | currency }}
       </td>
       <td>
         <button
@@ -87,9 +95,9 @@
       </td>
     </tr>
   </ng-template>
-  <ng-template pTemplate="summary">
+  <!-- <ng-template pTemplate="summary">
     <div class="flex align-items-center justify-content-between">
-      Hay en total {{ items ? items.length : 0 }} Reservaciones.
+      Hay en total {{ (items$ | async) ? (items$ | async)!.length : 0 }} Reservaciones.
     </div>
-  </ng-template>
+  </ng-template> -->
 </p-table>

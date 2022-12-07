@@ -8,7 +8,7 @@ import { BaseService } from './base.service';
   providedIn: 'root'
 })
 export class ReservationsService extends BaseService {
-  override serverUrl = `${environment.apiUrl}${pathnameEnum.discounts}`;
+  override serverUrl = `${environment.apiUrl}${pathnameEnum.reservations}`;
   constructor(httpClient: HttpClient) {
     super(httpClient);
   }

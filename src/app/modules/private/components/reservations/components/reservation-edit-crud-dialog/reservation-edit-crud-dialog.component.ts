@@ -6,9 +6,12 @@ import { filter, map, Observable, Subscription } from 'rxjs';
 import { UiSelectItemTableComponent } from 'src/app/components/ui-select-item-table/ui-select-item-table.component';
 import { abstractForm } from 'src/app/core/classes/abstract-form';
 import { Column } from 'src/app/core/models/Column';
+import { Discount } from 'src/app/project/models/Discounts';
 import { Reservation } from 'src/app/project/models/Reservations';
 import { Seat } from 'src/app/project/models/Seats';
 import { Show } from 'src/app/project/models/Shows';
+import { DiscountsService } from 'src/app/project/services/discounts.service';
+import { ReservationsService } from 'src/app/project/services/reservations.service';
 import { RoomsService } from 'src/app/project/services/rooms.service';
 import { ShowsService } from 'src/app/project/services/shows.service';
 
@@ -23,13 +26,13 @@ export class ReservationEditCrudDialogComponent
 {
   ref!: DynamicDialogRef;
   reservationData: Reservation = {} as Reservation;
-  cols : Column[] = [
-    {field: 'nombre', header:'Asiento Seleccionado'} as Column
-  ]
+  cols: Column[] = [
+    { field: 'nombre', header: 'Asiento Seleccionado' } as Column,
+  ];
   fechaFuncion!: Date;
   seats$!: Observable<Seat[]>;
   selectedSeats: Seat[] = [];
-  seatIsSelected : boolean = false;
+  seatIsSelected: boolean = false;
   total: number = 0;
   precioSala!: number;
   subscriptions$: Subscription = new Subscription();
@@ -37,7 +40,8 @@ export class ReservationEditCrudDialogComponent
     private fb: FormBuilder,
     private dialogService: DialogService,
     private showService: ShowsService,
-    // private reservationService : reservationSe
+    private discountService : DiscountsService,
+    private reservationService : ReservationsService,
     messageService: MessageService
   ) {
     super(messageService);
@@ -94,10 +98,16 @@ export class ReservationEditCrudDialogComponent
     }
     seat.disponible = false;
     if (this.selectedSeats.includes(seat)) {
-      console.log(this.selectedSeats.filter(element => element.idButaca != seat.idButaca));
-      this.selectedSeats = this.selectedSeats.filter(element => element.idButaca != seat.idButaca);
+      console.log(
+        this.selectedSeats.filter(
+          (element) => element.idButaca != seat.idButaca
+        )
+      );
+      this.selectedSeats = this.selectedSeats.filter(
+        (element) => element.idButaca != seat.idButaca
+      );
       seat.disponible = true;
-      if(this.selectedSeats.length == 0){
+      if (this.selectedSeats.length == 0) {
         this.seatIsSelected = false;
       }
       this.total -= this.precioSala;
@@ -118,7 +128,15 @@ export class ReservationEditCrudDialogComponent
     this.formGroup.markAllAsTouched();
     this.reservationData.seats = this.selectedSeats;
     this.reservationData.idUsuario = +(localStorage.getItem('idUser') || 0);
-    
-    console.log(this.reservationData);
+    let day = new Date().toLocaleString('es-AR', {  weekday: 'long' });
+    this.discountService.getDiscountOfDay(day).pipe(
+      map((response : Discount)=>{
+        this.reservationData.descuento = response;
+        this.reservationData.total = this.total*(1-response.porcentaje);
+        console.log(this.reservationData.total);
+        
+        this.reservationService.post(this.reservationData).subscribe();
+      })
+    ).subscribe();
   }
 }

@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ui-icon-badge.component.css']
 })
 export class UiIconBadgeComponent implements OnInit {
-
+  label! : string;
   constructor() { }
 
   ngOnInit(): void {
+    this.label = (localStorage.getItem('user') || '')
   }
 
 }

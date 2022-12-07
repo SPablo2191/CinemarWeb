@@ -1,11 +1,12 @@
 <div class="flex">
-  <!-- <p class="px-2">¡Bienvenido usuario123!</p> -->
-  <p-avatar
+  <p class="px-2">¡Bienvenido {{label}}!</p>
+  <!-- <p-avatar
     icon="pi pi-user"
     pBadge
     value="4"
     severity="success"
     styleClass="mr-2 my-2"
     size="medium"
-  ></p-avatar>
+  ></p-avatar> -->
+  <p-avatar icon="pi pi-user" styleClass="mr-2 my-2" size="medium" [style]="{'background-color':'#2196F3', 'color': '#ffffff'}"></p-avatar>
 </div>
