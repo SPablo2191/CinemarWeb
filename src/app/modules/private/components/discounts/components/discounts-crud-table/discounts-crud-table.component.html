@@ -2,7 +2,7 @@
     <div class="text-center">
       <p-table
         #dt
-        [value]="items"
+        [value]="(items$|async)!"
         [rows]="3"
         [paginator]="true"
         responsiveLayout="stack"
@@ -48,11 +48,11 @@
             </td>
             <td>
               <span class="p-column-title font-bold">Descripción</span
-              >{{ discount.Descripcion }}
+              >{{ discount.descripcion }}
             </td>
             <td>
               <span class="p-column-title font-bold">Porcentaje</span
-              >{{ discount.porcentaje }}
+              >{{ discount.porcentaje | percent  }}
             </td>
 
             <td>

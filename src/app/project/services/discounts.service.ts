@@ -7,10 +7,10 @@ import { BaseService } from './base.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ReservationsService extends BaseService {
-  override serverUrl = `${environment.apiUrl}${pathnameEnum.discounts}`;
+export class DiscountsService extends BaseService {
+  override serverUrl = `${environment.apiUrl}${pathnameEnum. discounts}`;
   constructor(httpClient: HttpClient) {
     super(httpClient);
   }
-
+  
 }

@@ -3,5 +3,6 @@ export enum pathnameEnum{
     movieRooms = 'rooms',
     shows = 'shows',
     users = 'users',
-    reservations = 'reservations'
+    reservations = 'reservations',
+    discounts = 'discounts'
 }
