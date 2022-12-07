@@ -40,6 +40,7 @@ export class ReservationEditCrudDialogComponent
     private fb: FormBuilder,
     private dialogService: DialogService,
     private showService: ShowsService,
+    public reference: DynamicDialogRef,
     private discountService : DiscountsService,
     private reservationService : ReservationsService,
     messageService: MessageService
@@ -134,8 +135,11 @@ export class ReservationEditCrudDialogComponent
         this.reservationData.descuento = response;
         this.reservationData.total = this.total*(1-response.porcentaje);
         console.log(this.reservationData.total);
-        
-        this.reservationService.post(this.reservationData).subscribe();
+        this.reservationService.post(this.reservationData).pipe(
+          map(response =>{
+            this.reference.close();
+          })
+        ).subscribe();
       })
     ).subscribe();
   }
