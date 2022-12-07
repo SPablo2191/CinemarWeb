@@ -12,6 +12,7 @@ export class UiMenuBarComponent implements OnInit, OnDestroy {
   private subscriptions$ = new Subscription();
   constructor(private navigationService: NavigationService) {}
   ngOnDestroy(): void {
+    console.log('bye')
     this.subscriptions$.unsubscribe();
   }
 

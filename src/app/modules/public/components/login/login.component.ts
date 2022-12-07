@@ -42,11 +42,13 @@ export class LoginComponent extends abstractForm implements OnInit {
     data.contrasena = this.formGroup.controls['password'].value;
     this.userService.post(data).pipe(
       tap((response : Session)=>{
+        console.log(response);
+        
         localStorage.setItem('access_token',response.token);
         localStorage.setItem('user',response.user);
         localStorage.setItem('idUser',response.idUser.toString());
         localStorage.setItem('idTipoUsuario',response.idTipoUsuario.toString());
-        console.log(`Bienvenido ${localStorage.getItem('user')}!`);
+        console.log(`Bienvenido ${localStorage.getItem('user')} - ${localStorage.getItem('idUser')}!`);
         
         this.router.navigate(['/home'])
       })

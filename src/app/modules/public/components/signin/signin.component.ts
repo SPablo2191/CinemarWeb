@@ -13,7 +13,12 @@ import { UsersService } from 'src/app/project/services/users.service';
   styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent extends abstractForm implements OnInit {
-  constructor(protected fb: FormBuilder, messageService: MessageService,private router : Router, private userService : UsersService) {
+  constructor(
+    protected fb: FormBuilder,
+    messageService: MessageService,
+    private router: Router,
+    private userService: UsersService
+  ) {
     super(messageService);
   }
 
@@ -30,28 +35,47 @@ export class SigninComponent extends abstractForm implements OnInit {
       nombreUsuario: [null],
       password: [],
       repPassword: [],
-      DNI : []
+      DNI: [],
     });
   }
   override submit(): void {
-    if(this.formGroup.controls['password'].value != this.formGroup.controls['repPassword'].value){
-      console.log("hola",this.formGroup.controls['password'].value)
+    if (
+      this.formGroup.controls['password'].value !=
+        this.formGroup.controls['repPassword'].value ||
+      this.formGroup.controls['nombre'].value == undefined ||
+      this.formGroup.controls['nombreUsuario'].value == undefined
+    ) {
+      this.addMessageService(
+        'warn',
+        'Advertencia',
+        'warn',
+        'Debe completar todos los campos para poder registrarse'
+      );
       return;
     }
     let data: User = {
       nombre: this.formGroup.controls['nombre'].value,
       apellido: this.formGroup.controls['apellido'].value,
       correo: this.formGroup.controls['correo'].value,
-      fechaNacimiento : this.formGroup.controls['fechaNac'].value,
+      fechaNacimiento: this.formGroup.controls['fechaNac'].value,
       telefono: this.formGroup.controls['telefono'].value,
       nombreUsuario: this.formGroup.controls['nombreUsuario'].value,
-      contrasena : this.formGroup.controls['password'].value,
-      DNI : this.formGroup.controls['DNI'].value,
+      contrasena: this.formGroup.controls['password'].value,
+      DNI: this.formGroup.controls['DNI'].value,
     } as User;
-    this.userService.register(data).pipe(
-      map((response)=>{
-        this.router.navigate(['/login'])
-      })
-    ).subscribe();
+    this.userService
+      .register(data)
+      .pipe(
+        map((response) => {
+          this.addMessageService(
+            'success',
+            'Exito',
+            'success',
+            '¡Usuario registrado con exito!'
+          );
+          this.router.navigate(['/login']);
+        })
+      )
+      .subscribe();
   }
 }

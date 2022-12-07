@@ -51,9 +51,7 @@ export class NavigationService {
 
   getItems(): Observable<MenuItem[]> {
     if(localStorage.getItem('idTipoUsuario') != '1'){
-      console.log(localStorage.getItem('idTipoUsuario'));
-      
-      this.items = [
+      let aux : MenuItem[] = [
         {
           label: 'Peliculas',
           icon: 'bi bi-camera-reels-fill',
@@ -73,6 +71,7 @@ export class NavigationService {
           },
         }
       ];
+      return of(aux);
     }
     return of(this.items);
   }

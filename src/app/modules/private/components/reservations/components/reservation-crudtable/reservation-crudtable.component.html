@@ -56,11 +56,11 @@
       <th>Acciones</th>
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-show>
+  <ng-template pTemplate="body" let-show let-i="rowIndex">
     <tr>
       <td>
         <span class="p-column-title font-bold">Reserva</span
-        >{{ show.idReserva }}
+        >{{ i+1 }}
       </td>
       <!-- <td>
         <span class="p-column-title font-bold">Pelicula</span
